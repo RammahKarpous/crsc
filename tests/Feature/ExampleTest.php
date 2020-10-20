@@ -7,15 +7,10 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
+    /** @test*/
+    public function club_official_can_add_parent() {
+        $this->post('/members', [
 
-        $response->assertStatus(200);
+        ]);
     }
 }
