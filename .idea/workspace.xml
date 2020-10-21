@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4af154fa-a22e-43aa-8207-f1f7097b12d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FamilyGroupController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ParentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SwimmerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/FamilyGroup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Parent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Swimmer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_140019_create_family_groups_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_142526_create_parents_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_142613_create_swimmers_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +163,7 @@
       <workItem from="1603114552563" duration="3683000" />
       <workItem from="1603134765754" duration="665000" />
       <workItem from="1603178750472" duration="36000" />
-      <workItem from="1603199735411" duration="4647000" />
+      <workItem from="1603199735411" duration="6122000" />
     </task>
     <servers />
   </component>
