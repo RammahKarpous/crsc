@@ -10,6 +10,7 @@ class ParentsController extends Controller
     public function store()
     {
         Parents::create([
+            'group_id' => request('group_id'),
             'name' => request('name'),
             'gender' => request('gender'),
             'dob' => request('dob')
