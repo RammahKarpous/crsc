@@ -7,8 +7,13 @@ use App\Models\Swimmer;
 
 class SwimmerController extends Controller
 {
-    public function index()
+    public function store()
     {
-        $swimmer = Swimmer::all();
+        Swimmer::create([
+            'group_id' => request('group_id'),
+            'name' => request('name'),
+            'gender' => request('gender'),
+            'dob' => request('dob')
+        ]);
     }
 }

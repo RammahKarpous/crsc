@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\FamilyGroup;
 use App\Models\Meet;
 use App\Models\Parents;
+use App\Models\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,62 +15,90 @@ class ClubOfficialFunctionalitiesTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    // public function a_club_official_can_add_a_family_group()
-    // {
-    //     $this->withoutExceptionHandling();
+    public function a_club_official_can_add_a_family_group()
+    {
 
-    //     $response = $this->post('/family-group', [
-    //         'family_name' => 'Johnson',
-    //         'address_line' => '47 Fernley Road',
-    //         'place' => 'Birmingham',
-    //         'postcode' => 'B11 3NS',
-    //         'contact_number' => '07 345 678 890',
-    //         'email' => 'thejohnson@gmail.com'
-    //     ]);
+        $response = $this->post('/family-group', [
+            'family_name' => 'Johnson',
+            'address_line' => '47 Fernley Road',
+            'place' => 'Birmingham',
+            'postcode' => 'B11 3NS',
+            'contact_number' => '07 345 678 890',
+            'email' => 'thejohnson@gmail.com'
+        ]);
 
-    //     $response->assertOk();
+        $response->assertOk();
 
-    //     $this->assertCount(1, FamilyGroup::all());
-    // }
-
-    
+        $this->assertCount(1, FamilyGroup::all());
+    }
 
     /** @test*/
-    // public function a_club_official_can_add_a_parent() {
+    public function a_club_official_can_add_a_parent() {
 
-    //     $this->withoutExceptionHandling();
+        $this->a_club_official_can_add_a_family_group();
 
-    //     $fg = FamilyGroup::first();
+        $famGroup = FamilyGroup::first();
 
-    //     // dd($fg->id);
-
-    //     $response = $this->post('/members', [
-    //         'group_id' => $fg->id,
-    //         'name' => 'Parent',
-    //         'gender' => 'Female',
-    //         'dob' => '28.09.1988'
-    //     ]);
+        $parent = $this->post('/parents', [
+            'group_id' => $famGroup->id,
+            'name' => 'Parent',
+            'gender' => 'Female',
+            'dob' => '28.09.1988'
+        ]);
         
-    //     $response->assertOk();
+        $parent->assertOk();
 
-    //     $this->assertEquals('group_id', FamilyGroup::first()->id);
+        $this->assertCount(1, Parents::all());
+    }
 
-    //     // $this->assertCount(1, Parents::all());
-    //     // $this->assertEquals($fg->id, );
-    // }
+    /** @test */
+    public function parents_information_is_required()
+    {
+        $this->a_club_official_can_add_a_family_group();
+
+        $parent = $this->post('/parents', [
+            'group_id' => null,
+            'name' => 'Parent name',
+            'gender' => 'Female',
+            'dob' => '1998-09-23'
+        ]);
+
+        $parent->assertSessionHasErrors(['group_id']);
+    }
+
+    /** @test */
+    public function a_club_official_can_add_a_swimmer() {
+
+        $this->withoutExceptionHandling();
+        
+        $this->a_club_official_can_add_a_family_group();
+
+        $famGroup = FamilyGroup::first();
+
+        $swimmer = $this->post('/swimmers', [
+            'group_id' => $famGroup->id,
+            'name' => 'Parent',
+            'gender' => 'Female',
+            'dob' => '28.09.1988'
+        ]);
+        
+        $swimmer->assertOk();
+
+        $this->assertCount(1, Swimmer::all());
+    }
 
     public function a_club_official_can_create_a_meet()
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/meets', [
+        $event = $this->post('/meets', [
             'name' => 'Rammah\'s new meet',
             'venue' => 'My venue',
             'date' => now(),
             'pool_length' => 6
         ]);
 
-        $response->assertOk();
+        $event->assertOk();
 
         $this->assertCount(1, Meet::all());
     }
