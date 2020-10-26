@@ -9,6 +9,7 @@ class MeetController extends Controller
 {
     public function store()
     {
+        // $data = $this->validateData();
 
         Meet::create([
             'name' => request('name'),
@@ -16,5 +17,10 @@ class MeetController extends Controller
             'date' => request('date'),
             'pool_length' => request('pool_length')
         ]);
+    }
+
+    public function validateData()
+    {
+        // return request()->validate();
     }
 }

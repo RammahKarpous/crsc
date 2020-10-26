@@ -15,4 +15,9 @@ class FamilyGroup extends Model
     {
         return $this->hasOne(Parents::class);
     }
+
+    public function swimmer()
+    {
+        return $this->hasMany(Swimmer::class);
+    }
 }

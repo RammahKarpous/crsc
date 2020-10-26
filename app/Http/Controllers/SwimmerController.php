@@ -9,16 +9,12 @@ class SwimmerController extends Controller
 {
     public function store()
     {
-        $data = $this->validateData();
-
-        Swimmer::create($data);
+        Swimmer::create($this->validateData());
     }
 
     public function update(Swimmer $swimmer)
     {
-        $data = $this->validateData();
-
-        $swimmer->update($data);
+        $swimmer->update($this->validateData());
     }
 
     public function validateData()

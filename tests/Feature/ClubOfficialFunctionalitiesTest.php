@@ -8,22 +8,26 @@ use App\Models\Parents;
 use App\Models\Swimmer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class ClubOfficialFunctionalitiesTest extends TestCase
 {
     use RefreshDatabase;
+    use WithoutMiddleware;
 
     /** @test */
     public function a_club_official_can_add_a_family_group()
     {
 
-        $response = $this->post('/family-group', [
+        $this->withoutExceptionHandling();
+        
+        $response = $this->post('/family', [
             'family_name' => 'Johnson',
             'address_line' => '47 Fernley Road',
             'place' => 'Birmingham',
             'postcode' => 'B11 3NS',
-            'contact_number' => '07 345 678 890',
+            'contact_number' => '07 345 678 890445',
             'email' => 'thejohnson@gmail.com'
         ]);
 
@@ -37,25 +41,22 @@ class ClubOfficialFunctionalitiesTest extends TestCase
 
         $this->a_club_official_can_add_a_family_group();
 
-        $famGroup = FamilyGroup::first();
-
         $parent = $this->post('/parents', [
-            'group_id' => $famGroup->id,
+            'group_id' => FamilyGroup::first()->id,
             'name' => 'Parent',
             'gender' => 'Female',
             'dob' => '28.09.1988',
             'status' => 'active'
         ]);
-        
-        $parent->assertOk();
 
+        $parent->assertOk();
+        
         $this->assertCount(1, Parents::all());
     }
 
     /** @test */
     public function parents_information_is_required()
     {
-        $this->a_club_official_can_add_a_family_group();
 
         $parent = $this->post('/parents', [
             'group_id' => null,
@@ -71,22 +72,18 @@ class ClubOfficialFunctionalitiesTest extends TestCase
     /** @test */
     public function a_club_official_can_add_a_swimmer() {
 
-        $this->withoutExceptionHandling();
-        
         $this->a_club_official_can_add_a_family_group();
-
+        
         $famGroup = FamilyGroup::first();
 
         $swimmer = $this->post('/swimmers', [
             'group_id' => $famGroup->id,
             'name' => 'Parent',
             'gender' => 'Female',
-            'dob' => '28.09.1988',
+            'dob' => '1998-09-23',
             'status' => 'active'
         ]);
         
-        $swimmer->assertOk();
-
         $this->assertCount(1, Swimmer::all());
     }
 
@@ -111,9 +108,7 @@ class ClubOfficialFunctionalitiesTest extends TestCase
     /** @test */
     public function a_club_official_can_edit_a_parent_name()
     {
-        $this->withoutExceptionHandling();
-        
-        $this->a_club_official_can_add_a_family_group();
+        $this->a_club_official_can_add_a_family_group();    
 
         $famGroup = FamilyGroup::first();
 
@@ -121,17 +116,17 @@ class ClubOfficialFunctionalitiesTest extends TestCase
             'group_id' => $famGroup->id,
             'name' => 'Parent',
             'gender' => 'Female',
-            'dob' => '28.09.1988',
+            'dob' => '1998-09-23',
             'status' => 'active'
         ]);
 
         $parent = Parents::first();
 
-        $response = $this->patch('/parents/' . $parent->id, [
+        $response = $this->patch('/parent/' . $parent->id, [
             'group_id' => $famGroup->id,
             'name' => 'New parent',
             'gender' => 'Female',
-            'dob' => '28.09.1988',
+            'dob' => '1998-09-23',
             'status' => 'active'
         ]);
 
@@ -141,8 +136,6 @@ class ClubOfficialFunctionalitiesTest extends TestCase
     /** @test */
     public function a_club_official_can_archive_a_parent()
     {
-        $this->withoutExceptionHandling();
-        
         $this->a_club_official_can_add_a_family_group();
 
         $famGroup = FamilyGroup::first();
@@ -157,7 +150,7 @@ class ClubOfficialFunctionalitiesTest extends TestCase
 
         $parent = Parents::first();
 
-        $response = $this->patch('/parents/' . $parent->id, [
+        $response = $this->patch('/parent/' . $parent->id, [
             'group_id' => $famGroup->id,
             'name' => 'Parent',
             'gender' => 'Female',

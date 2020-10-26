@@ -9,20 +9,19 @@ class ParentsController extends Controller
 {
     public function store()
     {
-
-        $data = $this->validateData();
-
-        Parents::create($data);
+        Parents::create($this->validateData());
     }
 
     public function update(Parents $parent)
     {
-
-        $data = $this->validateData();
-
-        $parent->update($data);
+        $parent->update($this->validateData());
     }
 
+    /**
+     * 
+     * @return mixed
+     * 
+     */
     public function validateData()
     {
         return request()->validate([
