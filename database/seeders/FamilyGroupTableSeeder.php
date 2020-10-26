@@ -16,7 +16,7 @@ class FamilyGroupTableSeeder extends Seeder
     {
         DB::table('family_groups')->insert([
             'family_name' => 'Johnson',
-            'address_line' => '47 Fernley Road',
+            'address_line' => '47 Solihull Road',
             'place' => 'Birmingham',
             'postcode' => 'B11 3NS',
             'contact_number' => '07 345 678 890',

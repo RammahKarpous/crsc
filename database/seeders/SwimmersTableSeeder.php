@@ -19,6 +19,7 @@ class SwimmersTableSeeder extends Seeder
             'name' => 'Swimmer',
             'gender' => 'Female',
             'dob' => '23.01.2006',
+            'status' => 'active',
             'created_at' => now(),
             'updated_at' => now()
         ]);

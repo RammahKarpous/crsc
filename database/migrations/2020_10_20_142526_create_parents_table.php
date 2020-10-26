@@ -19,6 +19,7 @@ class CreateParentsTable extends Migration
             $table->string('name');
             $table->string('gender');
             $table->string('dob');
+            $table->string('status');
             $table->timestamps();
             $table->foreign('group_id')->references('id')->on('family_groups');
         });

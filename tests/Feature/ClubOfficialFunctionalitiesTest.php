@@ -43,7 +43,8 @@ class ClubOfficialFunctionalitiesTest extends TestCase
             'group_id' => $famGroup->id,
             'name' => 'Parent',
             'gender' => 'Female',
-            'dob' => '28.09.1988'
+            'dob' => '28.09.1988',
+            'status' => 'active'
         ]);
         
         $parent->assertOk();
@@ -60,7 +61,8 @@ class ClubOfficialFunctionalitiesTest extends TestCase
             'group_id' => null,
             'name' => 'Parent name',
             'gender' => 'Female',
-            'dob' => '1998-09-23'
+            'dob' => '1998-09-23',
+            'status' => 'active'
         ]);
 
         $parent->assertSessionHasErrors(['group_id']);
@@ -79,7 +81,8 @@ class ClubOfficialFunctionalitiesTest extends TestCase
             'group_id' => $famGroup->id,
             'name' => 'Parent',
             'gender' => 'Female',
-            'dob' => '28.09.1988'
+            'dob' => '28.09.1988',
+            'status' => 'active'
         ]);
         
         $swimmer->assertOk();
@@ -87,8 +90,10 @@ class ClubOfficialFunctionalitiesTest extends TestCase
         $this->assertCount(1, Swimmer::all());
     }
 
+    /** @test */
     public function a_club_official_can_create_a_meet()
     {
+        
         $this->withoutExceptionHandling();
 
         $event = $this->post('/meets', [
@@ -101,5 +106,65 @@ class ClubOfficialFunctionalitiesTest extends TestCase
         $event->assertOk();
 
         $this->assertCount(1, Meet::all());
+    }
+
+    /** @test */
+    public function a_club_official_can_edit_a_parent_name()
+    {
+        $this->withoutExceptionHandling();
+        
+        $this->a_club_official_can_add_a_family_group();
+
+        $famGroup = FamilyGroup::first();
+
+        $this->post('/parents', [
+            'group_id' => $famGroup->id,
+            'name' => 'Parent',
+            'gender' => 'Female',
+            'dob' => '28.09.1988',
+            'status' => 'active'
+        ]);
+
+        $parent = Parents::first();
+
+        $response = $this->patch('/parents/' . $parent->id, [
+            'group_id' => $famGroup->id,
+            'name' => 'New parent',
+            'gender' => 'Female',
+            'dob' => '28.09.1988',
+            'status' => 'active'
+        ]);
+
+        $this->assertEquals('New parent', Parents::first()->name);
+    }
+
+    /** @test */
+    public function a_club_official_can_archive_a_parent()
+    {
+        $this->withoutExceptionHandling();
+        
+        $this->a_club_official_can_add_a_family_group();
+
+        $famGroup = FamilyGroup::first();
+
+        $this->post('/parents', [
+            'group_id' => $famGroup->id,
+            'name' => 'Parent',
+            'gender' => 'Female',
+            'dob' => '28.09.1988',
+            'status' => 'active'
+        ]);
+
+        $parent = Parents::first();
+
+        $response = $this->patch('/parents/' . $parent->id, [
+            'group_id' => $famGroup->id,
+            'name' => 'Parent',
+            'gender' => 'Female',
+            'dob' => '28.09.1988',
+            'status' => 'archived'
+        ]);
+
+        $this->assertEquals('archived', Parents::first()->status);
     }
 }

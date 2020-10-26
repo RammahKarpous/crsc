@@ -9,11 +9,26 @@ class SwimmerController extends Controller
 {
     public function store()
     {
-        Swimmer::create([
-            'group_id' => request('group_id'),
-            'name' => request('name'),
-            'gender' => request('gender'),
-            'dob' => request('dob')
+        $data = $this->validateData();
+
+        Swimmer::create($data);
+    }
+
+    public function update(Swimmer $swimmer)
+    {
+        $data = $this->validateData();
+
+        $swimmer->update($data);
+    }
+
+    public function validateData()
+    {
+        return request()->validate([
+            'group_id' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'dob' => 'required|date',
+            'status' => 'required'
         ]);
     }
 }

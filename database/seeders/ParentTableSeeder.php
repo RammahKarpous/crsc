@@ -16,9 +16,11 @@ class ParentTableSeeder extends Seeder
     {
         DB::table('parents')->insert([
             'group_id' => 1,
-            'name' => 'Parent',
+            'name' => 'John',
+            'member_type' => 'parent',
             'gender' => 'Female',
             'dob' => '28.09.1988',
+            'status' => 'active',
             'created_at' => now(),
             'updated_at' => now()
         ]);
