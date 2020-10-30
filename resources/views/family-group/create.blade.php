@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <h1>Create a family group</h1>
+    <h1>Create a family group</h1>
 
     <form action="{{ route('family-group.store') }}" method="post">
         <div>
@@ -36,5 +36,5 @@
 
         @csrf
         <input type="submit" value="Add group">
-    </form> --}}
+    </form>
 @endsection

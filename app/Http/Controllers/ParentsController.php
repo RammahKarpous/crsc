@@ -25,7 +25,7 @@ class ParentsController extends Controller
     public function validateData()
     {
         return request()->validate([
-            'group_id' => 'required',
+            'group_id' => 'nullable',
             'name' => 'required',
             'gender' => 'required',
             'dob' => 'required|date',

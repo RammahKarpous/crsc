@@ -15,7 +15,7 @@ class CreateSwimmersTable extends Migration
     {
         Schema::create('swimmers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('group_id')->nullable();
             $table->string('name');
             $table->string('gender');
             $table->string('dob');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParentsTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateParentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parents', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group_id')->nullable();
-            $table->string('name');
+            $table->unsignedBigInteger('meet_id')->nullable();
+            $table->string('age_range');
             $table->string('gender');
-            $table->string('dob');
-            $table->string('status');
+            $table->integer('distance');
+            $table->string('stroke');
+            $table->integer('round');
             $table->timestamps();
-            $table->foreign('group_id')->references('id')->on('family_groups');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateParentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parents');
+        Schema::dropIfExists('events');
     }
 }
