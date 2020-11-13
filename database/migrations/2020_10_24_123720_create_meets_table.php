@@ -18,7 +18,7 @@ class CreateMeetsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('venue');
-            $table->date('date');
+            $table->timestamp('date');
             $table->integer('pool_length');
             $table->timestamps();
         });

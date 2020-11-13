@@ -15,11 +15,11 @@ class CreateEventInfosTable extends Migration
     {
         Schema::create('event_infos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('swimmer_id');
+            $table->unsignedBigInteger('member_id');
             $table->integer('lane');
             $table->string('result');
             $table->timestamps();
-            $table->foreign('swimmer_id')->references('id')->on('swimmers');
+            $table->foreign('member_id')->references('id')->on('members');
         });
     }
 

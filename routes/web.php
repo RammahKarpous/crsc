@@ -7,6 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [PagesController::class, 'index'])->name('pages.index');
 
 // Family group
@@ -26,7 +27,11 @@ Route::patch('/members/{member}/update', [MemberController::class, 'update'])->n
 
 // Meets
 Route::get('/meets', [MeetController::class, 'index'])->name('meets.index');
+Route::get('/meets/create', [MeetController::class, 'create'])->name('meets.create');
 Route::post('/meets/store', [MeetController::class, 'store'])->name('meets.store');
+Route::get('/meets/{meet:slug}/edit', [MeetController::class, 'edit'])->name('meets.edit');
+Route::patch('/meets/{meet:slug}/update', [MeetController::class, 'update'])->name('meets.update');
+Route::get('/meets/{meet:slug}', [MeetController::class, 'show'])->name('meets.show');
 
 // Events
 Route::post('/events/store', [EventsController::class, 'store'])->name('events.store');
