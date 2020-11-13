@@ -4,11 +4,11 @@
 <div>
     <h1>{{ $group->family_name }}</h1>
 
-    <a href="{{ route('family-group.edit', $group->slug) }}">Update group info</a>
+    <a href="{{ route('family-group.edit', $group->slug) }}" class="btn btn-primary mr-1">Update group info</a>
 
-    <a href="{{ url()->previous() }}">Back to family groups</a>
+    <a href="{{ route('family-group.index') }}" class="btn btn-secondary mr-1">Back to family groups</a>
 
-    <a href="{{ route('family-group.create-member', $group->slug) }}">Add member</a>
+    <a href="{{ route('family-group.create-member', $group->slug) }}" class="btn btn-outline-secondary mr-1">Add member</a>
     
     @if (count($group->members) > 0)
         <div>

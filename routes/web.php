@@ -13,6 +13,7 @@ Route::get('/', [PagesController::class, 'index'])->name('pages.index');
 Route::get('/family-group', [FamilyGroupController::class, 'index'])->name('family-group.index');
 Route::post('/family-group/store', [FamilyGroupController::class, 'store'])->name('family-group.store');
 Route::get('/family-group/create', [FamilyGroupController::class, 'create'])->name('family-group.create');
+
 Route::get('/family-group/{familyGroup:slug}', [FamilyGroupController::class, 'show'])->name('family-group.show');
 Route::get('/family-group/{familyGroup:slug}/edit', [FamilyGroupController::class, 'edit'])->name('family-group.edit');
 Route::put('/family-group/{familyGroup:slug}/update', [FamilyGroupController::class, 'update'])->name('family-group.update');
@@ -20,12 +21,12 @@ Route::put('/family-group/{familyGroup:slug}/update', [FamilyGroupController::cl
 Route::get('/family-group/{familyGroup:slug}/create-member', [MemberController::class, 'create'])->name('family-group.create-member');
 
 // Members
-// Route::get('/members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
 Route::post('/members/store', [MemberController::class, 'store'])->name('members.store');
 Route::patch('/members/{member}/update', [MemberController::class, 'update'])->name('members.update');
 
 // Meets
-Route::post('/meets/store', [MeetController::class, 'store'])->name('meet.store');
+Route::get('/meets', [MeetController::class, 'index'])->name('meets.index');
+Route::post('/meets/store', [MeetController::class, 'store'])->name('meets.store');
 
 // Events
 Route::post('/events/store', [EventsController::class, 'store'])->name('events.store');

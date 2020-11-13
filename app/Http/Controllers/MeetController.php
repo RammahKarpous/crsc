@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class MeetController extends Controller
 {
+    public function index()
+    {
+        return view('meets.index');
+    }
+
     public function store()
     {
         Meet::create($this->validateData());
