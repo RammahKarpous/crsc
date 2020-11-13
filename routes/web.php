@@ -33,6 +33,6 @@ Route::post('/events/store', [EventsController::class, 'store'])->name('events.s
 Route::post('/events/{event}', [EventsController::class, 'addSwimmers'])->name('events.add-swimmers');
 Route::patch('/events/{event}', [EventsController::class, 'update'])->name('events.update');
 
+// Auth
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
