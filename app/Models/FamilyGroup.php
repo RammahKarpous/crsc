@@ -11,13 +11,8 @@ class FamilyGroup extends Model
 
     protected $guarded = [];
 
-    public function parent()
+    public function members()
     {
-        return $this->hasOne(Parents::class);
-    }
-
-    public function swimmer()
-    {
-        return $this->hasMany(Swimmer::class);
+        return $this->hasMany(Member::class);
     }
 }

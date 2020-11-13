@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\FamilyGroup;
 use Illuminate\Http\Request;
 
@@ -19,25 +20,50 @@ class FamilyGroupController extends Controller
     {
         return view('family-group.create');
     }
+
+    public function show(FamilyGroup $familyGroup)
+    {
+        return view('family-group.show', ['group' => $familyGroup]);
+    }
     
     public function store()
     {
-
-        // $data = $this->validateData();
+        $this->validateData();
 
         FamilyGroup::create([
             'family_name' => request('family_name'),
+            'slug' => Str::slug(request('family_name')),
             'address_line' => request('address_line'),
             'place' => request('place'),
             'postcode' => request('postcode'),
             'contact_number' => request('contact_number'),
-            'email' => request('email')
+            'email' => request('email'),
         ]);
-        
+
+        return redirect()->route('family-group.index');
+    }
+
+    public function edit(FamilyGroup $familyGroup)
+    {
+        return view('family-group.edit', ['group' => $familyGroup]);
+    }
+
+    public function update(FamilyGroup $familyGroup)
+    {
+        $familyGroup->update($this->validateData());
+
+        return redirect()->back();
     }
 
     public function validateData()
     {
-        // return request()->validate();
+        return request()->validate([
+            'family_name' => 'required',
+            'address_line' => 'required',
+            'place' => 'required',
+            'postcode' => 'required',
+            'contact_number' => 'required',
+            'email' => 'required'
+        ]);
     }
 }

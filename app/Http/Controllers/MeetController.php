@@ -9,18 +9,17 @@ class MeetController extends Controller
 {
     public function store()
     {
-        // $data = $this->validateData();
-
-        Meet::create([
-            'name' => request('name'),
-            'venue' => request('venue'),
-            'date' => request('date'),
-            'pool_length' => request('pool_length')
-        ]);
+        Meet::create($this->validateData());
     }
 
     public function validateData()
     {
-        // return request()->validate();
+        return request()->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'venue' => 'required',
+            'date' => 'required|date',
+            'pool_length' => 'required'
+        ]);
     }
 }

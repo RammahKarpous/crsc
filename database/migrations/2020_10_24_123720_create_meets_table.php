@@ -16,6 +16,7 @@ class CreateMeetsTable extends Migration
         Schema::create('meets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('venue');
             $table->date('date');
             $table->integer('pool_length');

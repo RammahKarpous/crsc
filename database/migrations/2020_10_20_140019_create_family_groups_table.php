@@ -16,11 +16,12 @@ class CreateFamilyGroupsTable extends Migration
         Schema::create('family_groups', function (Blueprint $table) {
             $table->id();
             $table->string('family_name');
+            $table->string('slug');
             $table->string('address_line');
             $table->string('place');
             $table->string('postcode');
             $table->string('contact_number');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }

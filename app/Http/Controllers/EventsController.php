@@ -12,7 +12,17 @@ class EventsController extends Controller
         Event::create($this->validateData());
     }
 
-    public function validateData()
+    public function update(Event $event)
+    {
+        $event->update($this->validateData());
+    }
+
+    public function addSwimmers()
+    {
+        
+    }
+
+    protected function validateData()
     {
         return request()->validate([
             'age_range' => 'required',

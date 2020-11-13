@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             FamilyGroupTableSeeder::class,
-            ParentTableSeeder::class,
-            SwimmersTableSeeder::class
+            // ParentTableSeeder::class,
+            // SwimmersTableSeeder::class
+            StatusesTableSeeder::class,
+            MemberTypesTableSeeder::class
         ]);
     }
 }

@@ -90,10 +90,89 @@
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./resources/js/components/index.js");
+// populate user data event
+
+Object(_components__WEBPACK_IMPORTED_MODULE_0__["populateFormData"])();
+
+/***/ }),
+
+/***/ "./resources/js/components/index.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/index.js ***!
+  \******************************************/
+/*! exports provided: populateFormData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _populateFormData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./populateFormData */ "./resources/js/components/populateFormData.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "populateFormData", function() { return _populateFormData__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/populateFormData.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/populateFormData.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var populateFormData = function populateFormData() {
+  var populateFam = document.querySelector('#populate'); // family form elements
+
+  var familyName = document.querySelector('#family_name'),
+      addressLine = document.querySelector('#address_line'),
+      livingPlace = document.querySelector('#place'),
+      postcode = document.querySelector('#postcode'),
+      contactNumber = document.querySelector('#contact_number'),
+      email = document.querySelector('#email');
+  populateFam.addEventListener('click', function () {
+    var data = familyData[Math.floor(Math.random() * familyData.length)];
+    familyName.value = data['familyName'];
+    addressLine.value = data['addressLine'];
+    livingPlace.value = data['livingPlace'];
+    postcode.value = data['postcode'];
+    contactNumber.value = data['contactNumber'];
+    email.value = data['email'];
+  });
+  var familyData = [{
+    familyName: 'Karpous',
+    addressLine: '47 Fernley Road',
+    city: 'Birmingham',
+    postcode: 'B11 3NS',
+    contactNumber: '07 123 456 789',
+    email: 'rammahkarpous@outlook.com'
+  }, {
+    familyName: 'Johnson',
+    addressLine: '47 Berry Street',
+    city: 'Solihull',
+    postcode: 'B11 3NS',
+    contactNumber: '07 123 456 789',
+    email: 'thejognsons@outlook.com'
+  }, {
+    familyName: 'Jackie',
+    addressLine: '51 Solihull Road',
+    city: 'Stoke-On-Trent',
+    postcode: 'ST24 3NS',
+    contactNumber: '07 234 456 789',
+    email: 'jackiechan@outlook.com'
+  }];
+  var memberData = [{
+    name: 'Rammah'
+  }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (populateFormData);
 
 /***/ }),
 

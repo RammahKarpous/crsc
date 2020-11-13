@@ -20,6 +20,7 @@ class MeetManagementTest extends TestCase
         
         $event = $this->post('/meets/store', [
             'name' => 'Rammah new meet',
+            'slug' => 'rammah-new-meet',
             'venue' => 'My venue',
             'date' => '11/24/2020',
             'pool_length' => 6

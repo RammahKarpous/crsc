@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\FamilyGroup;
 use App\Models\Parents;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -11,84 +12,68 @@ use Tests\TestCase;
 
 class ParentManagementTest extends TestCase
 {
-
     use RefreshDatabase;
     use WithoutMiddleware;
 
-    /** @test*/
-    public function a_club_official_can_add_a_parent() {
+    /** @test */
+    public function a_parent_can_be_created() {
 
-        $parent = $this->post('/parents', [
-            'name' => 'Parent',
-            'gender' => 'Female',
-            'dob' => '28.09.1988',
-            'status' => 'active'
-        ]);
-        
+        // $this->withoutExceptionHandling();
+
+        $this->post('/parents/store', $this->data());
         $this->assertCount(1, Parents::all());
+
+        $this->assertInstanceOf(Carbon::class, Parents::first()->dob);
     }
 
-    /** @test */
-    public function parents_information_is_required()
+    // /** @test */
+    public function parent_information_is_required()
     {
-
-        $parent = $this->post('/parents', [
-            'name' => '',
-            'gender' => 'Female',
-            'dob' => '1998-09-23',
-            'status' => 'active'
-        ]);
-
+        $parent = $this->post('/parents', array_merge($this->data(), ['name' => '']));
         $parent->assertSessionHasErrors(['name']);
     }
 
     // /** @test */
-    public function a_club_official_can_edit_a_parent_name()
+    public function a_parent_can_be_updated()
     {
-                
-        $this->post('/parents', [
-            'name' => 'Robert',
-            'gender' => 'Female',
-            'dob' => '1988-09-23',
-            'status' => 'active'
-        ]);
-        
+        // $this->withoutExceptionHandling();
+   
+        $this->post('/parents', $this->data());
+        $this->assertCount(1, Parents::all());
+
         $parent = Parents::first();
+        $response = $this->patch('/parents/' . $parent->id, array_merge($this->data(), ['name' => 'Jessica']));
 
-        $response = $this->patch('/parent/' . $parent->id, [
-            // 'group_id' => FamilyGroup::first()->id,
-            'name' => 'Jessica',
-            'gender' => 'Female',
-            'dob' => '1988-09-23',
-            'status' => 'active'
-        ]);
+        $response->assertOK();
 
+        $this->assertInstanceOf(Carbon::class, $parent->first()->dob);
         $this->assertEquals('Jessica', Parents::first()->name);
     }
 
     // /** @test */
-    public function a_club_official_can_archive_a_parent()
+    public function a_parent_can_be_archived()
     {
         $this->withoutExceptionHandling();
 
-        $famGroup = FamilyGroup::first();
-
-        $this->post('/parents', [
-            'name' => 'Parent',
-            'gender' => 'Female',
-            'dob' => '28.09.1988',
-            'status' => 'active'
-        ]);
+        $this->post('/parents', $this->data());
 
         $parent = Parents::first();
 
-        $response = $this->patch('/parent/' . $parent->id, [
-            'name' => 'Parent',
-            'gender' => 'Female',
-            'dob' => '28.09.1988',
-            'status' => 'archived'
-        ]);
+        $response = $this->patch('/parent/' . $parent->id, array_merge($this->data(), ['status_id' => 3]));
 
         $this->assertEquals('archived', Parents::first()->status);
+    }
+
+    public function data()
+    {
+        return [
+            'group_id' => null,
+            'name' => 'Robert',
+            'slug' => 'robert',
+            'gender' => 'Female',
+            'dob' => '09/28/1998',
+            'passwords' => 'robert',
+            'status_id' => 3
+        ];
     }
 }

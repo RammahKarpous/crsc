@@ -15,13 +15,16 @@ class CreateParentsTable extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('family_group_id')->nullable();
+            $table->string('member_type');
             $table->string('name');
             $table->string('gender');
-            $table->string('dob');
-            $table->string('status');
+            $table->timestamp('dob');
+            $table->foreignId('status_id');
+            $table->string('password');
             $table->timestamps();
-            $table->foreign('group_id')->references('id')->on('family_groups');
+            $table->foreign('family_group_id')->references('id')->on('family_groups');
+            $table->foreign('status_id')->references('id')->on('statuses');
         });
     }
 

@@ -10,4 +10,9 @@ class Event extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function swimmers()
+    {
+        return $this->hasMany(Swimmer::class);
+    }
 }

@@ -18,20 +18,25 @@ class FamilyGroupTest extends TestCase
     use WithoutMiddleware;
 
     /** @test */
-    public function a_club_official_can_add_a_family_group()
+    public function a_family_group_can_be_created()
     {
         
-        $response = $this->post('/family/store', [
+        $response = $this->post('/family/store', $this->data());
+        $response->assertOk();
+
+        $this->assertCount(1, FamilyGroup::all());
+    } 
+
+    public function data()
+    {
+        return [
             'family_name' => 'Johnson',
+            'slug' => 'johnson',
             'address_line' => '47 Fernley Road',
             'place' => 'Birmingham',
             'postcode' => 'B11 3NS',
             'contact_number' => '07 345 678 890445',
             'email' => 'thejohnson@gmail.com'
-        ]);
-
-        $response->assertOk();
-
-        $this->assertCount(1, FamilyGroup::all());
-    }  
+        ];
+    }
 }

@@ -6,6 +6,6 @@
     <a href="{{ route('family-group.create') }}">Add a family group</a>
 
     @foreach ($groups as $group)
-        <p>{{ $group->family_name }}</p>
+        <a href="{{ route('family-group.show', $group->slug) }}">{{ $group->family_name }}</a>
     @endforeach
 @endsection
