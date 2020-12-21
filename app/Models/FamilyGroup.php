@@ -11,7 +11,7 @@ class FamilyGroup extends Model
 
     protected $guarded = [];
 
-    public function members()
+    public function users()
     {
         return $this->hasMany(Member::class);
     }

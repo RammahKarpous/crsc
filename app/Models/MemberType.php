@@ -9,7 +9,7 @@ class MemberType extends Model
 {
     use HasFactory;
 
-    public function member()
+    public function user()
     {
         return $this->hasOne(Member::class);
     }

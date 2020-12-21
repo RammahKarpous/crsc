@@ -9,13 +9,8 @@ class Status extends Model
 {
     use HasFactory;
 
-    public function parent()
+    public function user()
     {
         return $this->hasOne(Parents::class);
-    }
-
-    public function swimmer()
-    {
-        return $this->hasOne(Swimmer::class);
     }
 }
