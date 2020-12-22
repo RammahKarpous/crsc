@@ -11,8 +11,18 @@ class Event extends Model
 
     protected $guarded = [];
 
-    public function swimmers()
+    public function users()
     {
-        return $this->hasMany(Swimmer::class);
+        return $this->hasMany(Member::class);
+    }
+
+    public function meet()
+    {
+        return $this->belongsTo(Meet::class);
+    }
+
+    public function age_range()
+    {
+        return $this->belongsTo(AgeRange::class);
     }
 }

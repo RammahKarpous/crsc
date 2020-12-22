@@ -3,19 +3,49 @@
 @section('title', 'Meets')
 
 @section('content')
-    <h1>Meets</h1>
+    <div class="wrapper">
+        
+        <div class="page-title-with-buttons">
+            <h1>Meets</h1>
+            
+            @auth
+                @if (Auth::user()->member_type_id == 3)
+                    <div class="buttons--wrapper buttons--wrapper-horizontal">
+                        <a href="{{ route('meets.create') }}" class="button button--primary">Add a Meet</a>
+                    </div>
+                @endif
+            @endauth
+            
+        </div>
 
-    <a href="{{ route('meets.create') }}" class="btn btn-primary">Add a Meet</a>
-
-    <div class="meets">
-        @foreach ($meets as $meet)
-            <div class="meets--meet-info mt-4">
-                <a href="{{ route('meets.show', $meet->slug) }}">{{ $meet->name }}</a>
-                <p>{{ $meet->venue }}</p>
-                <p>{{ date('d/m/Y', strtotime($meet->date)) }}</p>
-                <p>{{ $meet->pool_length }}</p>
-                <a href="{{ route('meets.edit', $meet->slug) }}" class="btn btn-secondary">Update even</a>
+        <div class="table">
+            <div class="row-5 no-bg border-bottom">
+                <h4>Meet name</h4>
+                <h4>Venue</h4>
+                <h4>Date</h4>
+                <h4>Pool length</h4>
+                <p></p>
             </div>
-        @endforeach
+
+            @foreach ($meets as $meet)
+                <a href="{{ route('meets.show', $meet->slug) }}" class="meets--meet-info row row-5">
+                    <p>{{ $meet->name }}</p>
+                    <p>{{ $meet->venue }}</p>
+                    <p>{{ date('d/m/Y', strtotime($meet->date)) }}</p>
+                    <p>{{ $meet->pool_length }}</p>
+                    
+                    @auth
+                        @if(Auth::user()->member_type_id == 3)
+                            <p class="button button--primary">Update Meet</p> 
+                        @else
+                            <p class="button button--primary">View Events</p>
+                        @endif
+
+                    @else
+                        <p class="button button--primary">View Events</p>
+                    @endauth
+                </a>
+            @endforeach
+        </div>
     </div>
 @endsection

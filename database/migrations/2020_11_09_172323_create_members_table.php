@@ -17,6 +17,7 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('family_group_id')->nullable();            
             $table->foreignId('member_type_id');
+            $table->foreignId('event_id')->nullable();
             $table->string('name');
             $table->string('gender');
             $table->timestamp('dob');
@@ -25,6 +26,7 @@ class CreateMembersTable extends Migration
             $table->timestamps();
             $table->foreign('family_group_id')->references('id')->on('family_groups');            
             $table->foreign('member_type_id')->references('id')->on('member_types');
+            $table->foreign('event_id')->references('id')->on('events');
             $table->foreign('status_id')->references('id')->on('statuses');
         });
     }

@@ -1,4 +1,5 @@
-<form action="{{ route($route, $method === 'put' ? $model->slug : '') }}" method="post">
+<form class="form" action="{{ route($route, $method === 'put' ? $model->slug : '') }}" method="post">
+    
     <div>
         <label for="family_name">Family name</label>
         <input type="text" name="family_name" id="family_name" value="{{ $method === 'put' ? $model->family_name : '' }}">

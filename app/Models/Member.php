@@ -33,4 +33,9 @@ class Member extends Model
     {
         return $this->belongsTo(MemberType::class);
     }
+
+    public function event()
+    {
+        return $this->belongsTo(MemberType::class);
+    }
 }

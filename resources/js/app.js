@@ -1,5 +1,9 @@
 
 // populate user data event
-import { populateFormData } from './components';
+import { 
+    populateFormData,
+    updateDetails
+} from './components';
 
-populateFormData();
+populateFormData()
+updateDetails()

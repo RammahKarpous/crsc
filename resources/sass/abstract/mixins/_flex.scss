@@ -1,0 +1,24 @@
+@mixin flex($direction, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+@mixin flex-simple($gap) {
+    display: flex;
+    gap: $gap;
+}
+
+@mixin flex-row-space-between {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-center {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}

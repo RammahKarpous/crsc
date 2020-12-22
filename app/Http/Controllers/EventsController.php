@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Meet;
 use App\Models\Member;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,7 @@ class EventsController extends Controller
 
             $maxDate = Carbon::today()->subYears($minAge)->endOfDay();
 
-            $swimmers = Member::where([
+            $swimmers = User::where([
                 ['member_type_id', '=', 2],
                 ['gender', '=', $event->gender],
                 ['dob', '>=', $maxDate]
@@ -51,7 +52,7 @@ class EventsController extends Controller
             $minDate = Carbon::today()->subYears($maxAge);
             $maxDate = Carbon::today()->subYears($minAge)->endOfDay();
 
-            $swimmers = Member::where([
+            $swimmers = User::where([
                 ['member_type_id', '=', 2],
                 ['gender', '=', $event->gender]
             ])->whereBetween('dob', [$minDate, $maxDate])->get();

@@ -1,0 +1,28 @@
+.table {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+
+    p,
+    h4,
+    h5 {
+        margin: 0;
+        padding: 20px;
+    }
+
+    p.button {
+        cursor: pointer;
+    }
+
+    .button {
+        border-radius: 0;
+        @include flex-center;
+    }
+
+    .row {
+        background: $light-gray;
+        display: grid;
+
+        @include anon-loop(1, 20, 11);
+    }
+}

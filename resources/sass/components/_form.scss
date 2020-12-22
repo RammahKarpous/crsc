@@ -1,0 +1,30 @@
+.form {
+    @include loop(1, 9, 20px, col);
+
+    &__group {
+        position: relative;
+    }
+
+    $input-padding: 12px;
+
+    input,
+    textarea,
+    select {
+        outline-style: none;
+    }
+
+    &__input {
+        padding: $input-padding;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid $primary;
+
+        &--text,
+        &--textarea,
+        &--time,
+        &--number,
+        &--date {
+            @include calc-width(100%, $input-padding);
+        }
+    }
+}

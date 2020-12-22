@@ -33,7 +33,7 @@ class MeetController extends Controller
         $this->validateData();
         Meet::create($this->data());
 
-        return view('meets.index');
+        return view('meets.index', ['meets' => Meet::all()]);
     }
 
     public function update(Meet $meet)

@@ -24,15 +24,7 @@ class MemberController extends Controller
     {
         
         $this->validateData();
-        Member::create([
-            'family_group_id' => request('group_id'),
-            'member_type_id' => request('member_type_id'),
-            'name' => request('name'),
-            'gender' => request('gender'),
-            'dob' => request('dob'),
-            'password' => request('name'),
-            'status_id' => request('status_id')
-        ]);
+        Member::create($this->data());
 
         return redirect()->back()->with('success', 'Member has been added');
     }
@@ -40,24 +32,11 @@ class MemberController extends Controller
     public function update(Member $member)
     {
         $this->validateData();
-        $member->update([
-            'family_group_id' => request('group_id'),
-            'member_type_id' => request('member_type_id'),
-            'name' => request('name'),
-            'gender' => request('gender'),
-            'dob' => request('dob'),
-            'password' => request('name'),
-            'status_id' => request('status_id')
-        ]);
+        $member->update($this->data());
 
         return redirect()->back()->with('success', 'Member has been updated');
     }
 
-    /**
-     * 
-     * @return mixed
-     * 
-     */
     protected function validateData()
     {
         return request()->validate([
@@ -69,5 +48,18 @@ class MemberController extends Controller
             'password' => 'nullable',
             'status_id' => 'required'
         ]);
+    }
+
+    public function data()
+    {
+        return [
+            'family_group_id' => request('group_id'),
+            'member_type_id' => request('member_type_id'),
+            'name' => request('name'),
+            'gender' => request('gender'),
+            'dob' => request('dob'),
+            'password' => request('name'),
+            'status_id' => request('status_id')
+        ];
     }
 }

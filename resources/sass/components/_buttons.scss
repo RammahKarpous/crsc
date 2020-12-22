@@ -1,0 +1,46 @@
+.buttons {
+    &--wrapper {
+        @include flex-simple(20px);
+        align-items: center;
+        justify-content: flex-start;
+
+        &-vertical {
+            flex-flow: column;
+        }
+
+        &-horizontal {
+            flex-flow: row;
+        }
+    }
+}
+
+.button {
+    display: inline-block;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+    gap: 20px;
+    font-size: 1em;
+    cursor: pointer;
+
+    &--primary {
+        background: $primary;
+        color: $light-gray;
+
+        &:hover {
+            background: lighten($primary, 5%);
+            color: $light-gray;
+        }
+    }
+
+    &--secondary {
+        background: transparentize($primary, 0.85);
+        color: $primary;
+
+        &:hover {
+            background: transparentize($primary, 0.7);
+        }
+    }
+}

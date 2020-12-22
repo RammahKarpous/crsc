@@ -1,0 +1,15 @@
+$bg-colour: #f6f6f6;
+
+$primary: #092d5b;
+$secondary: #386dbb;
+$accent: #1bdac9;
+
+$light-gray: #fcfcfc;
+
+.no-bg {
+    background: transparent;
+}
+
+.bg-light-gray {
+    background: $light-gray;
+}

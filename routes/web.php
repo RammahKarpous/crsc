@@ -3,10 +3,10 @@
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FamilyGroupController;
 use App\Http\Controllers\MeetController;
-use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/', [PagesController::class, 'index'])->name('pages.index');
 
@@ -19,11 +19,12 @@ Route::get('/family-group/{familyGroup:slug}', [FamilyGroupController::class, 's
 Route::get('/family-group/{familyGroup:slug}/edit', [FamilyGroupController::class, 'edit'])->name('family-group.edit');
 Route::put('/family-group/{familyGroup:slug}/update', [FamilyGroupController::class, 'update'])->name('family-group.update');
 
-Route::get('/family-group/{familyGroup:slug}/create-member', [MemberController::class, 'create'])->name('family-group.create-member');
+// Create member through family group
+Route::get('/family-group/{familyGroup:slug}/create-member', [UserController::class, 'create'])->name('members.create');
 
 // Members
-Route::post('/members/store', [MemberController::class, 'store'])->name('members.store');
-Route::patch('/members/{member}/update', [MemberController::class, 'update'])->name('members.update');
+Route::post('/members/store', [UserController::class, 'store'])->name('members.store');
+Route::patch('/members/{member}/update', [UserController::class, 'update'])->name('members.update');
 
 // Meets
 Route::get('/meets', [MeetController::class, 'index'])->name('meets.index');
@@ -33,10 +34,16 @@ Route::get('/meets/{meet:slug}/edit', [MeetController::class, 'edit'])->name('me
 Route::patch('/meets/{meet:slug}/update', [MeetController::class, 'update'])->name('meets.update');
 Route::get('/meets/{meet:slug}', [MeetController::class, 'show'])->name('meets.show');
 
+// Create event through meet
+Route::get('/meets/{meet:slug}/create-event', [EventsController::class, 'create'])->name('events.create');
+
 // Events
 Route::post('/events/store', [EventsController::class, 'store'])->name('events.store');
-Route::post('/events/{event}', [EventsController::class, 'addSwimmers'])->name('events.add-swimmers');
+Route::post('/events/{event}', [EventsController::class, 'storeSwimmers'])->name('events.store-swimmers');
 Route::patch('/events/{event}', [EventsController::class, 'update'])->name('events.update');
+
+// Add swimmers through event
+Route::get('events/{event:slug}/add-swimmers', [EventsController::class, 'addSwimmers'])->name('events.add-swimmers');
 
 // Auth
 Auth::routes();

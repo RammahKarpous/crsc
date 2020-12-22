@@ -16,11 +16,15 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('meet_id')->nullable();
-            $table->string('age_range');
+            $table->foreignId('age_range_id');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->string('slug');
             $table->string('gender');
             $table->integer('distance');
             $table->string('stroke');
             $table->integer('round');
+            $table->foreign('age_range_id')->references('id')->on('age_ranges');
             $table->timestamps();
         });
     }

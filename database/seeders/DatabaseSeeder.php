@@ -13,13 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
+            AgeRangesTableSeeder::class,
             FamilyGroupTableSeeder::class,
-            // ParentTableSeeder::class,
-            // SwimmersTableSeeder::class
             StatusesTableSeeder::class,
-            MemberTypesTableSeeder::class
+            MemberTypesTableSeeder::class,
+            UsersTableSeeder::class
         ]);
     }
 }

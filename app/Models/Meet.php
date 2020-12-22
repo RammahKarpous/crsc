@@ -18,4 +18,9 @@ class Meet extends Model
     {
         $this->attributes['date'] = Carbon::parse($date);
     }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

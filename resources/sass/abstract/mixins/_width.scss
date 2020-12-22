@@ -1,0 +1,4 @@
+@mixin calc-width($width, $padding) {
+    padding: $padding;
+    width: calc(#{$width} - #{$padding} * 2);
+}

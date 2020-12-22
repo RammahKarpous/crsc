@@ -30,15 +30,7 @@ class FamilyGroupController extends Controller
     {
         $this->validateData();
 
-        FamilyGroup::create([
-            'family_name' => request('family_name'),
-            'slug' => Str::slug(request('family_name')),
-            'address_line' => request('address_line'),
-            'place' => request('place'),
-            'postcode' => request('postcode'),
-            'contact_number' => request('contact_number'),
-            'email' => request('email'),
-        ]);
+        FamilyGroup::create($this->data());
 
         return redirect()->route('family-group.index');
     }
@@ -50,9 +42,23 @@ class FamilyGroupController extends Controller
 
     public function update(FamilyGroup $familyGroup)
     {
-        $familyGroup->update($this->validateData());
+        $this->validateData();
+        $familyGroup->update($this->data());
 
-        return redirect()->back();
+        return redirect()->route('family-group.edit', $familyGroup->slug);
+    }
+
+    public function data()
+    {
+        return [
+            'family_name' => request('family_name'),
+            'slug' => Str::slug(request('family_name')),
+            'address_line' => request('address_line'),
+            'place' => request('place'),
+            'postcode' => request('postcode'),
+            'contact_number' => request('contact_number'),
+            'email' => request('email'),
+        ];
     }
 
     public function validateData()

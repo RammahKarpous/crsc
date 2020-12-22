@@ -4,8 +4,29 @@
 // Variables
 @import "variables";
 
+// mixins
+@import "abstract/mixins/flex";
+@import "abstract/mixins/grid";
+@import "abstract/mixins/loop";
+@import "abstract/mixins/width";
+@import "abstract/mixins/margin";
+@import "abstract/mixins/padding";
+
+// abstract
+@import "abstract/colours";
+@import "abstract/text";
+
 // Components
 @import "components/form";
+@import "components/buttons";
+@import "components/navigation";
+@import "components/table";
 
-// Bootstrap
-@import "~bootstrap/scss/bootstrap";
+// layout
+@import "layout/wrapper";
+
+body {
+    background: $bg-colour;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}

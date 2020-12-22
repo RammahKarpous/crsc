@@ -1,0 +1,11 @@
+.wrapper {
+    width: calc(1500px - 40px);
+    max-width: calc(1500px - 40px);
+    margin: auto;
+    padding: 20px;
+
+    &--narrow {
+        width: calc(900px - 40px);
+        max-width: calc(900px - 40px);
+    }
+}
