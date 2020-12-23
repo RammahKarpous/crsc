@@ -37,7 +37,7 @@ class MeetController extends Controller
     }
 
     public function update(Meet $meet)
-    {
+    {        
         $this->validateData();
         $meet->update($this->data());
 

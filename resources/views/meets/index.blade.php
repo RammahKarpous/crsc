@@ -38,7 +38,7 @@
                         @if(Auth::user()->member_type_id == 3)
                             <a href="#" id="update-meet" class="button button--primary">Update Meet</a>
 
-                            <form class="form gcol-1-6 row-5 align-center" action="{{ route('meets.update', $meet->id) }}" method="POST">
+                            <form class="form gcol-1-6 row-5 align-center" action="{{ route('meets.update', $meet->slug) }}" method="POST">
 
                                 <div class="form__group">
                                     <input type="text" name="name" id="name" class="form__input form__input--text" value="{{ $meet->name }}">
@@ -49,7 +49,7 @@
                                 </div>
 
                                 <div class="form__group">
-                                    <input type="date" name="date" id="date" class="form__input form__input--text" value="{{ date('Y/m/d', strtotime($meet->date)) }}">
+                                    <input type="date" name="date" id="date" class="form__input form__input--text" value="{{ date('Y-m-d', strtotime($meet->date)) }}">
                                 </div>
 
                                 <div class="form__group">
