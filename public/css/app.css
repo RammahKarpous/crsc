@@ -5729,7 +5729,7 @@ a:active {
 
 .heading--small {
   font-size: 16px;
-  font-weight: bold;
+  padding: 0 !important;
 }
 
 .form .col-1 {

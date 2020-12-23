@@ -6,7 +6,7 @@
     <section class="table mb-90">
         <div class="row-6">
             <div class="content-section">
-                <p class="heading heading--small">Address</p>
+                <h4 class="heading heading--small">Address</h4>
                 <p>{{ Auth::user()->family_group->address_line }}</p>
                 <p>{{ Auth::user()->family_group->place }}</p>
                 <p>{{ Auth::user()->family_group->postcode }}</p>
@@ -15,7 +15,7 @@
             </div>
 
             <div class="content-section">
-                <p class="heading heading--small">Contact details</p>
+                <h4 class="heading heading--small">Contact details</h4>
                 <p>{{ Auth::user()->family_group->contact_number }}</p>
                 <p>{{ Auth::user()->family_group->email }}</p>
             </div>
@@ -24,6 +24,7 @@
 
     <section>
         <h2 class="heading heading--section">All family members</h2>
-
+        
+        
     </section>
 </div>
