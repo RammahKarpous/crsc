@@ -28,7 +28,7 @@
             </div>
 
             @foreach ($meets as $meet)
-                <a href="{{ route('meets.show', $meet->slug) }}" class="meets--meet-info row row-5">
+                <div class="meets--meet-info row row-5">
                     <p>{{ $meet->name }}</p>
                     <p>{{ $meet->venue }}</p>
                     <p>{{ date('d/m/Y', strtotime($meet->date)) }}</p>
@@ -36,15 +36,37 @@
                     
                     @auth
                         @if(Auth::user()->member_type_id == 3)
-                            <p class="button button--primary">Update Meet</p> 
+                            <a href="#" id="update-meet" class="button button--primary">Update Meet</a>
+
+                            <form class="form gcol-1-6 row-5 align-center" action="{{ route('meets.update', $meet->id) }}" method="POST">
+
+                                <div class="form__group">
+                                    <input type="text" name="name" id="name" class="form__input form__input--text" value="{{ $meet->name }}">
+                                </div>
+
+                                <div class="form__group">
+                                    <input type="text" name="venue" id="venue" class="form__input form__input--text" value="{{ $meet->venue }}">
+                                </div>
+
+                                <div class="form__group">
+                                    <input type="date" name="date" id="date" class="form__input form__input--text" value="{{ date('Y/m/d', strtotime($meet->date)) }}">
+                                </div>
+
+                                <div class="form__group">
+                                    <input type="number" name="pool_length" id="pool_length" class="form__input form__input--text" value="{{ $meet->pool_length }}">
+                                </div>
+                                @csrf
+                                @method('PATCH')
+                                <input type="submit" value="Update" class="button button--secondary">
+                            </form>
                         @else
-                            <p class="button button--primary">View Events</p>
+                            <a href="{{ route('meets.show', $meet->slug) }}" class="button button--primary">View Events</a>
                         @endif
 
                     @else
-                        <p class="button button--primary">View Events</p>
+                        <a href="{{ route('meets.show', $meet->slug) }}" class="button button--primary">View Events</a>
                     @endauth
-                </a>
+                </div>
             @endforeach
         </div>
     </div>

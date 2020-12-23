@@ -2,7 +2,7 @@
     @for $i from $start to $end {
         .#{$name}-#{$i} {
             display: grid;
-            gap: $gap;
+            gap: #{$gap}px;
 
             @if $i == 1 {
                 grid-template-columns: 1fr;
@@ -17,7 +17,7 @@
     @for $i from $start to $end {
         &-#{$i} {
             display: grid;
-            gap: $gap;
+            gap: #{$gap}px;
 
             @if $i == 1 {
                 grid-template-columns: 1fr;

@@ -5443,7 +5443,7 @@ Object(_components__WEBPACK_IMPORTED_MODULE_0__["updateDetails"])();
 /*!******************************************!*\
   !*** ./resources/js/components/index.js ***!
   \******************************************/
-/*! exports provided: populateFormData, updateDetails */
+/*! exports provided: populateFormData, updateDetails, updateMeets */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5453,6 +5453,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _updateDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./updateDetails */ "./resources/js/components/updateDetails.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "updateDetails", function() { return _updateDetails__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _updateMeets__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./updateMeets */ "./resources/js/components/updateMeets.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "updateMeets", function() { return _updateMeets__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
 
 
 
@@ -5542,6 +5546,38 @@ var updateDetails = function updateDetails(e) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (updateDetails);
+
+/***/ }),
+
+/***/ "./resources/js/components/updateMeets.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/updateMeets.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+
+
+var updateMeets = function updateMeets() {
+  var tl = new gsap__WEBPACK_IMPORTED_MODULE_0__["TimelineMax"]();
+  var meetForm = document.querySelector('.meets--meet-info .form');
+  var updateButton = document.querySelector('#update-meet');
+  tl.from(form, {
+    duration: .3,
+    y: -70,
+    opacity: 0
+  });
+  tl.reverse();
+  updateButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    tl.reversed ? tl.play() : tl.reverse();
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (updateMeets);
 
 /***/ }),
 

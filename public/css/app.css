@@ -40,6 +40,10 @@
   gap: 10px;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .gcol-1-3 {
   grid-column-start: 1;
   grid-column-end: 3;
@@ -48,6 +52,11 @@
 .gcol-2-3 {
   grid-column-start: 2;
   grid-column-end: 4;
+}
+
+.gcol-1-6 {
+  grid-column-start: 1;
+  grid-column-end: 6;
 }
 
 .gcol-5-7 {
@@ -5680,49 +5689,49 @@ a:active {
 
 .form .col-1 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: 1fr;
 }
 
 .form .col-2 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .form .col-3 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .form .col-4 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .form .col-5 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .form .col-6 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(6, 1fr);
 }
 
 .form .col-7 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(7, 1fr);
 }
 
 .form .col-8 {
   display: grid;
-  gap: 20px;
+  gap: 20pxpx;
   grid-template-columns: repeat(8, 1fr);
 }
 
@@ -5770,7 +5779,7 @@ a:active {
 .button {
   display: inline-block;
   border: none;
-  padding: 15px 40px;
+  padding: 10px 30px;
   border-radius: 5px;
   text-align: center;
   transition: 0.3s;
@@ -5851,115 +5860,115 @@ a:active {
 
 .table .row-1 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: 1fr;
 }
 
 .table .row-2 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .table .row-3 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .table .row-4 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .table .row-5 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .table .row-6 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(6, 1fr);
 }
 
 .table .row-7 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(7, 1fr);
 }
 
 .table .row-8 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(8, 1fr);
 }
 
 .table .row-9 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(9, 1fr);
 }
 
 .table .row-10 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(10, 1fr);
 }
 
 .table .row-11 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(11, 1fr);
 }
 
 .table .row-12 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(12, 1fr);
 }
 
 .table .row-13 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(13, 1fr);
 }
 
 .table .row-14 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(14, 1fr);
 }
 
 .table .row-15 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(15, 1fr);
 }
 
 .table .row-16 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(16, 1fr);
 }
 
 .table .row-17 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(17, 1fr);
 }
 
 .table .row-18 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(18, 1fr);
 }
 
 .table .row-19 {
   display: grid;
-  gap: 11;
+  gap: 11px;
   grid-template-columns: repeat(19, 1fr);
 }
 
