@@ -1,33 +1,33 @@
 @mixin padding($top, $right, $bottom, $left) {
-    padding: $top $right $bottom $left;
+    padding: $top $right $bottom $left !important;
 }
 
 @for $i from 1 to 101 {
     .p-#{$i} {
-        padding: #{$i}px;
+        padding: #{$i}px !important;
     }
 
     .pt-#{$i} {
-        padding-top: #{$i}px;
+        padding-top: #{$i}px !important;
     }
 
     .pr-#{$i} {
-        padding-right: #{$i}px;
+        padding-right: #{$i}px !important;
     }
 
     .pb-#{$i} {
-        padding-bottom: #{$i}px;
+        padding-bottom: #{$i}px !important;
     }
 
     .pl-#{$i} {
-        padding-left: #{$i}px;
+        padding-left: #{$i}px !important;
     }
 
     .py-#{$i} {
-        padding: #{$i}px 0;
+        padding: #{$i}px 0 !important;
     }
 
     .px-#{$i} {
-        padding: 0 #{$i}px;
+        padding: 0 #{$i}px !important;
     }
 }

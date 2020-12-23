@@ -1,5 +1,5 @@
 <nav class="nav">
-    <div class="wrapper">
+    <div class="wrapper px-20">
         <a class="navbar-brand" href="@auth {{ route('home') }} @else {{ url('/') }} @endauth">
             LOGO
         </a>
