@@ -5689,49 +5689,49 @@ a:active {
 
 .form .col-1 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: 1fr;
 }
 
 .form .col-2 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .form .col-3 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .form .col-4 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .form .col-5 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .form .col-6 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(6, 1fr);
 }
 
 .form .col-7 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(7, 1fr);
 }
 
 .form .col-8 {
   display: grid;
-  gap: 20pxpx;
+  gap: 20px;
   grid-template-columns: repeat(8, 1fr);
 }
 
@@ -5805,6 +5805,17 @@ a:active {
 
 .button--secondary:hover {
   background: rgba(9, 45, 91, 0.3);
+}
+
+.button__link {
+  color: #2187a1;
+  transition: 0.3s;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.button__link:hover {
+  color: #2599b6;
 }
 
 .nav .wrapper {

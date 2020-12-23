@@ -1,5 +1,5 @@
 .form {
-    @include loop(1, 9, 20px, col);
+    @include loop(1, 9, 20, col);
 
     &__group {
         position: relative;

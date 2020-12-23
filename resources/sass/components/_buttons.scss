@@ -43,4 +43,15 @@
             background: transparentize($primary, 0.7);
         }
     }
+
+    &__link {
+        color: $accent-two;
+        transition: 0.3s;
+        padding: 0;
+        margin-left: 20px;
+
+        &:hover {
+            color: lighten($accent-two, 5%);
+        }
+    }
 }
