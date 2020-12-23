@@ -11,3 +11,20 @@ a {
 .page-title-with-buttons {
     @include flex-row-space-between();
 }
+
+.heading {
+    margin: 0;
+
+    &--page {
+        font-size: 64px;
+    }
+
+    &--section {
+        font-size: 32px;
+    }
+
+    &--small {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}

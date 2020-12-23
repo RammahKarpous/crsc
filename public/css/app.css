@@ -64,6 +64,34 @@
   grid-column-end: 7;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mr-0 {
+  margin-right: 0px;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.ml-0 {
+  margin-left: 0px;
+}
+
+.my-0 {
+  margin: 0px 0;
+}
+
+.mx-0 {
+  margin: 0 0px;
+}
+
 .m-1 {
   margin: 1px;
 }
@@ -5687,6 +5715,23 @@ a:active {
   align-items: center;
 }
 
+.heading {
+  margin: 0;
+}
+
+.heading--page {
+  font-size: 64px;
+}
+
+.heading--section {
+  font-size: 32px;
+}
+
+.heading--small {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .form .col-1 {
   display: grid;
   gap: 20px;
@@ -5805,6 +5850,10 @@ a:active {
 
 .button--secondary:hover {
   background: rgba(9, 45, 91, 0.3);
+}
+
+.button--rounded {
+  border-radius: 5px !important;
 }
 
 .button__link {
@@ -5995,6 +6044,12 @@ a:active {
 .wrapper--narrow {
   width: calc(900px - 40px);
   max-width: calc(900px - 40px);
+}
+
+.parent-view p,
+.parent-view h3 {
+  margin: 0;
+  padding: 0;
 }
 
 body {

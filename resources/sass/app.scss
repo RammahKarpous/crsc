@@ -25,6 +25,9 @@
 // layout
 @import "layout/wrapper";
 
+// Pages
+@import "pages/parent-view.scss";
+
 body {
     background: $bg-colour;
     font-family: "Poppins", sans-serif;

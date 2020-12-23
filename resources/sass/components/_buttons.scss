@@ -44,6 +44,10 @@
         }
     }
 
+    &--rounded {
+        border-radius: 5px !important;
+    }
+
     &__link {
         color: $accent-two;
         transition: 0.3s;

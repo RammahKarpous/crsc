@@ -2,7 +2,7 @@
     margin: $top $right $bottom $left;
 }
 
-@for $i from 1 to 101 {
+@for $i from 0 to 101 {
     .m-#{$i} {
         margin: #{$i}px;
     }
