@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class FamilyGroupController extends Controller
 {
 
+    public function __constructor()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('family-group.index', [
@@ -28,10 +33,7 @@ class FamilyGroupController extends Controller
     
     public function store()
     {
-        $this->validateData();
-
-        FamilyGroup::create($this->data());
-
+        FamilyGroup::create(array_merge($this->validateData(), ['slug' => Str::slug(request('family_name'))]));
         return redirect()->route('family-group.index');
     }
 
@@ -42,23 +44,8 @@ class FamilyGroupController extends Controller
 
     public function update(FamilyGroup $familyGroup)
     {
-        $this->validateData();
-        $familyGroup->update($this->data());
-
+        $familyGroup->update(array_merge($this->validateData(), ['slug' => Str::slug(request('family_name'))]));
         return redirect()->route('family-group.edit', $familyGroup->slug);
-    }
-
-    public function data()
-    {
-        return [
-            'family_name' => request('family_name'),
-            'slug' => Str::slug(request('family_name')),
-            'address_line' => request('address_line'),
-            'place' => request('place'),
-            'postcode' => request('postcode'),
-            'contact_number' => request('contact_number'),
-            'email' => request('email'),
-        ];
     }
 
     public function validateData()

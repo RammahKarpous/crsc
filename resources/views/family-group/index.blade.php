@@ -27,7 +27,7 @@
 
                     <div class="row-2 gcol-5-7 gap-10 bg-light-gray">
                         <a class="button button--primary" href="{{ route('family-group.show', $group->slug) }}">View members</a>
-                        <p class="button button--secondary" id="update-details">Update details</p>
+                        <a href="{{ route('family-group.edit', $group->slug) }}" class="button button--secondary" id="update-details">Update details</a>
                     </div>
 
                     <form class="form" action="" method="POST" class="form">

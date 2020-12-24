@@ -1,0 +1,15 @@
+.status {
+    &--active {
+        background: green;
+        color: white;
+    }
+
+    &--pending {
+        background: gray;
+    }
+
+    &--archived {
+        background: orange;
+        color: white;
+    }
+}

@@ -11,7 +11,7 @@
                 <p>{{ Auth::user()->family_group->place }}</p>
                 <p>{{ Auth::user()->family_group->postcode }}</p>
 
-                <a href="" class="button button--primary button--rounded mt-20 mr-50">Update details</a>
+                <a href="{{ route('family-group.edit', Auth::user()->family_group->slug) }}" class="button button--primary button--rounded mt-20 mr-50">Update details</a>
             </div>
 
             <div class="content-section">
@@ -20,11 +20,5 @@
                 <p>{{ Auth::user()->family_group->email }}</p>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h2 class="heading heading--section">All family members</h2>
-        
-        
     </section>
 </div>

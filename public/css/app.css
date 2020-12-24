@@ -6034,6 +6034,20 @@ a:active {
   grid-template-columns: repeat(19, 1fr);
 }
 
+.status--active {
+  background: green;
+  color: white;
+}
+
+.status--pending {
+  background: gray;
+}
+
+.status--archived {
+  background: orange;
+  color: white;
+}
+
 .wrapper {
   width: calc(1500px - 40px);
   max-width: calc(1500px - 40px);
@@ -6044,6 +6058,10 @@ a:active {
 .wrapper--narrow {
   width: calc(900px - 40px);
   max-width: calc(900px - 40px);
+}
+
+.hidden-element {
+  display: none;
 }
 
 .parent-view p,

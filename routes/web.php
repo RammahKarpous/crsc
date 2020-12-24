@@ -24,6 +24,7 @@ Route::get('/family-group/{familyGroup:slug}/create-member', [UserController::cl
 
 // Members
 Route::post('/members/store', [UserController::class, 'store'])->name('members.store');
+Route::post('/members/{member:slug}/edit', [UserController::class, 'store'])->name('members.edit');
 Route::patch('/members/{member}/update', [UserController::class, 'update'])->name('members.update');
 
 // Meets

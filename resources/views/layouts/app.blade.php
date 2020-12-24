@@ -24,6 +24,10 @@
             {{-- <x-messages :status="Session::get('success')"> --}}
             @yield('content')
         </main>
+
+        @guest
+            <x-footer />
+        @endguest
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
