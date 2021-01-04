@@ -3,6 +3,7 @@
         .#{$name}-#{$i} {
             display: grid;
             gap: #{$gap}px;
+            align-items: flex-end;
 
             @if $i == 1 {
                 grid-template-columns: 1fr;

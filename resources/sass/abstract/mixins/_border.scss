@@ -1,0 +1,9 @@
+@for $i from 1 to 50 {
+    .border-radius-#{$i} {
+        border-radius: #{$i}px;
+    }
+}
+
+.bb-light-gray {
+    border-bottom: 1px solid #ddd;
+}

@@ -23,4 +23,15 @@ class Meet extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    // Scopes
+    public function scopeVenue($query)
+    {
+        return $query->where('venue', request('venue'));
+    }
+
+    public function scopeDateRange($query)
+    {
+        return $query->where('venue', request('venue'));
+    }
 }

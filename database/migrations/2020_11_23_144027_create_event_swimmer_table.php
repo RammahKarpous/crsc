@@ -16,11 +16,9 @@ class CreateEventSwimmerTable extends Migration
         Schema::create('event_swimmer', function (Blueprint $table) {
             $table->id();
             $table->foreignId('event_id');
-            $table->foreignId('member_id');
+            $table->foreignId('user_id');
             $table->integer('lane')->unique();
             $table->string('result')->nullable();
-            $table->foreign('event_id')->references('id')->on('events');
-            $table->foreign('member_id')->references('id')->on('members');
             $table->timestamps();
         });
     }

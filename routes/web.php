@@ -23,12 +23,13 @@ Route::put('/family-group/{familyGroup:slug}/update', [FamilyGroupController::cl
 Route::get('/family-group/{familyGroup:slug}/create-member', [UserController::class, 'create'])->name('members.create');
 
 // Members
-Route::post('/members/store', [UserController::class, 'store'])->name('members.store');
-Route::post('/members/{member:slug}/edit', [UserController::class, 'store'])->name('members.edit');
-Route::patch('/members/{member}/update', [UserController::class, 'update'])->name('members.update');
+Route::post('/users/store', [UserController::class, 'store'])->name('members.store');
+Route::get('/users/{user:slug}/edit', [UserController::class, 'edit'])->name('members.edit');
+Route::patch('/users/{user}/update', [UserController::class, 'update'])->name('members.update');
 
 // Meets
 Route::get('/meets', [MeetController::class, 'index'])->name('meets.index');
+Route::post('/meets', [MeetController::class, 'filter'])->name('meets.filter');
 Route::get('/meets/create', [MeetController::class, 'create'])->name('meets.create');
 Route::post('/meets/store', [MeetController::class, 'store'])->name('meets.store');
 Route::get('/meets/{meet:slug}/edit', [MeetController::class, 'edit'])->name('meets.edit');
@@ -42,9 +43,11 @@ Route::get('/meets/{meet:slug}/create-event', [EventsController::class, 'create'
 Route::post('/events/store', [EventsController::class, 'store'])->name('events.store');
 Route::post('/events/{event}', [EventsController::class, 'storeSwimmers'])->name('events.store-swimmers');
 Route::patch('/events/{event}', [EventsController::class, 'update'])->name('events.update');
+Route::get('/event/{event:slug}', [EventsController::class, 'show'])->name('events.show');
 
 // Add swimmers through event
 Route::get('events/{event:slug}/add-swimmers', [EventsController::class, 'addSwimmers'])->name('events.add-swimmers');
+Route::get('events/attach-swimmers', [EventsController::class, 'attachSwimmers'])->name('events.attach-swimmers');
 
 // Auth
 Auth::routes();

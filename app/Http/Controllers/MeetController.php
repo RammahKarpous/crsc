@@ -10,7 +10,10 @@ class MeetController extends Controller
 {
     public function index()
     {
-        return view('meets.index', ['meets' => Meet::all()]);
+        return view('meets.index', [
+            'meets' => Meet::all(),
+            'venues' => Meet::all()->unique()->where('venue', request('venue'))
+        ]);
     }
 
     public function create()
@@ -20,7 +23,9 @@ class MeetController extends Controller
 
     public function show(Meet $meet)
     {
-        return view('meets.show', ['meet' => $meet]);
+        return view('meets.show', [
+            'meet' => $meet
+        ]);
     }
 
     public function edit(Meet $meet)
@@ -42,6 +47,24 @@ class MeetController extends Controller
         $meet->update($this->data());
 
         return redirect()->route('meets.index', ['meets' => Meet::all()]);
+    }
+
+    public function filter()
+    {
+
+
+        if (request('venue')) 
+        {
+            return view('meets.index', [
+                'meets' => Meet::all()->where('venue', request('venue')), 
+                'venues' => Meet::all()->unique()->where('venue', request('venue'))
+            ]);
+        } 
+        
+        else if (request('venue') && request('start_date') && request('end_date')) 
+        {
+            return view('meets.index', ['meets' => Meet::where('venue', request('venue'))]);
+        }
     }
 
     public function data()

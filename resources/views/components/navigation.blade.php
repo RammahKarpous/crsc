@@ -1,6 +1,6 @@
 <nav class="nav">
     <div class="wrapper px-20">
-        <a class="navbar-brand" href="@auth {{ route('home') }} @else {{ url('/') }} @endauth">
+        <a class="navbar-brand" href="{{ url('/') }}">
             LOGO
         </a>
 

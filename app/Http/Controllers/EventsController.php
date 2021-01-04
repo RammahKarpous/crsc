@@ -23,6 +23,11 @@ class EventsController extends Controller
         return redirect()->back()->with('success', 'An event has been added.');
     }
 
+    public function show(Event $event)
+    {
+        return view('events.show', ['event' => $event]);
+    }
+
     public function update(Event $event)
     {
         $this->validateData();
@@ -59,6 +64,17 @@ class EventsController extends Controller
 
             return view('events.add-swimmers', ['swimmers' => $swimmers, 'event' => $event]);
         }
+    }
+
+    public function attachSwimmers()
+    {
+        User::where('id', request('is-participating'))
+            ->update([
+                'event_id' => request('event_id'),
+                'lane' => request('lane-number')
+            ]);
+
+        return redirect()->back()->with('success', 'The swimmer(s) has/have been added to the event.');
     }
 
     public function data()

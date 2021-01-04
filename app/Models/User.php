@@ -20,11 +20,15 @@ class User extends Authenticatable
     protected $fillable = [
         'family_group_id',
         'member_type_id',
+        'event_id',
         'name',
+        'slug',
         'email',
         'gender',
         'dob',
         'password',
+        'lane',
+        'result',
         'status_id',
     ];
 

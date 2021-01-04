@@ -3,7 +3,7 @@
 @section('content')
     <div class="wrapper">
         <h1>Add a family group</h1>
-        <button class="btn btn-secondary" id="populate">Populate</button>
+        <a href="{{ url()->previous() }}" class="button button--secondary mb-20" id="populate">Populate</a>
 
         <x-family-form route="family-group.store" method="post" />
     </div>

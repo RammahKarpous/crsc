@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FamilyGroup;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,7 +34,12 @@ class UserController extends Controller
         $this->validateData();
         $user->update($this->data());
 
-        return redirect()->back()->with('success', 'Member has been updated');
+        return redirect()->route('members.edit', $user->slug)->with('success', 'Member has been updated');
+    }
+
+    public function edit(User $user)
+    {
+        return view('members.edit', ['user' => $user]);
     }
 
     protected function validateData()
@@ -60,6 +66,7 @@ class UserController extends Controller
                 'family_group_id' => request('group_id'),
                 'member_type_id' => request('member_type_id'),
                 'name' => request('name'),
+                'slug' => Str::slug(request('name')),
                 'email' =>  substr(request('name'), 0, 1) . rand(pow(10, $digits-1), pow(10, $digits)-1) . substr(request('family_name'), 0, 1) . '@crsc.com',
                 'gender' => request('gender'),
                 'dob' => request('dob'),
@@ -71,6 +78,7 @@ class UserController extends Controller
                 'family_group_id' => request('group_id'),
                 'member_type_id' => request('member_type_id'),
                 'name' => request('name'),
+                'slug' => Str::slug(request('name')),
                 'email' =>  request('email'),
                 'gender' => request('gender'),
                 'dob' => request('dob'),

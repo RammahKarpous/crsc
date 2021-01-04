@@ -30,12 +30,12 @@
         
             <div class="col-2 mt-12">
                 <div class="form__group">
-                    <input class="form__radio-button" type="radio" name="gender" id="male" value="male">
+                    <input class="form__radio-button" {{ $model->gender == 'male' ? 'checked' : '' }} type="radio" name="gender" id="male" value="male">
                     <label class="form__label" for="male">Male</label>
                 </div>
 
                 <div class="form__group">
-                    <input class="form__radio-button" type="radio" name="gender" id="female" value="female">
+                    <input class="form__radio-button" {{ $model->gender == 'female' ? 'checked' : '' }} type="radio" name="gender" id="female" value="female">
                     <label class="form__label" for="female">Female</label>
                 </div>
 

@@ -1,6 +1,219 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;
 
-600&display=swap);.gap-1 {
+600&display=swap);.border-radius-1 {
+  border-radius: 1px;
+}
+
+.border-radius-2 {
+  border-radius: 2px;
+}
+
+.border-radius-3 {
+  border-radius: 3px;
+}
+
+.border-radius-4 {
+  border-radius: 4px;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.border-radius-7 {
+  border-radius: 7px;
+}
+
+.border-radius-8 {
+  border-radius: 8px;
+}
+
+.border-radius-9 {
+  border-radius: 9px;
+}
+
+.border-radius-10 {
+  border-radius: 10px;
+}
+
+.border-radius-11 {
+  border-radius: 11px;
+}
+
+.border-radius-12 {
+  border-radius: 12px;
+}
+
+.border-radius-13 {
+  border-radius: 13px;
+}
+
+.border-radius-14 {
+  border-radius: 14px;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.border-radius-16 {
+  border-radius: 16px;
+}
+
+.border-radius-17 {
+  border-radius: 17px;
+}
+
+.border-radius-18 {
+  border-radius: 18px;
+}
+
+.border-radius-19 {
+  border-radius: 19px;
+}
+
+.border-radius-20 {
+  border-radius: 20px;
+}
+
+.border-radius-21 {
+  border-radius: 21px;
+}
+
+.border-radius-22 {
+  border-radius: 22px;
+}
+
+.border-radius-23 {
+  border-radius: 23px;
+}
+
+.border-radius-24 {
+  border-radius: 24px;
+}
+
+.border-radius-25 {
+  border-radius: 25px;
+}
+
+.border-radius-26 {
+  border-radius: 26px;
+}
+
+.border-radius-27 {
+  border-radius: 27px;
+}
+
+.border-radius-28 {
+  border-radius: 28px;
+}
+
+.border-radius-29 {
+  border-radius: 29px;
+}
+
+.border-radius-30 {
+  border-radius: 30px;
+}
+
+.border-radius-31 {
+  border-radius: 31px;
+}
+
+.border-radius-32 {
+  border-radius: 32px;
+}
+
+.border-radius-33 {
+  border-radius: 33px;
+}
+
+.border-radius-34 {
+  border-radius: 34px;
+}
+
+.border-radius-35 {
+  border-radius: 35px;
+}
+
+.border-radius-36 {
+  border-radius: 36px;
+}
+
+.border-radius-37 {
+  border-radius: 37px;
+}
+
+.border-radius-38 {
+  border-radius: 38px;
+}
+
+.border-radius-39 {
+  border-radius: 39px;
+}
+
+.border-radius-40 {
+  border-radius: 40px;
+}
+
+.border-radius-41 {
+  border-radius: 41px;
+}
+
+.border-radius-42 {
+  border-radius: 42px;
+}
+
+.border-radius-43 {
+  border-radius: 43px;
+}
+
+.border-radius-44 {
+  border-radius: 44px;
+}
+
+.border-radius-45 {
+  border-radius: 45px;
+}
+
+.border-radius-46 {
+  border-radius: 46px;
+}
+
+.border-radius-47 {
+  border-radius: 47px;
+}
+
+.border-radius-48 {
+  border-radius: 48px;
+}
+
+.border-radius-49 {
+  border-radius: 49px;
+}
+
+.bb-light-gray {
+  border-bottom: 1px solid #ddd;
+}
+
+.flex {
+  display: flex;
+  gap: 20px;
+}
+
+.flex--row {
+  flex-flow: row wrap;
+}
+
+.flex--center {
+  align-items: center !important;
+}
+
+.gap-1 {
   gap: 1px;
 }
 
@@ -49,8 +262,8 @@
   grid-column-end: 3;
 }
 
-.gcol-2-3 {
-  grid-column-start: 2;
+.gcol-1-4 {
+  grid-column-start: 1;
   grid-column-end: 4;
 }
 
@@ -59,9 +272,24 @@
   grid-column-end: 6;
 }
 
+.gcol-2-3 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.gcol-3-5 {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
 .gcol-5-7 {
   grid-column-start: 5;
   grid-column-end: 7;
+}
+
+.gcol-7-9 {
+  grid-column-start: 7;
+  grid-column-end: 9;
 }
 
 .m-0 {
@@ -5700,6 +5928,10 @@
   background: #fcfcfc;
 }
 
+.bg-darker-gray {
+  background: #efefef;
+}
+
 a {
   text-decoration: none;
 }
@@ -5735,48 +5967,56 @@ a:active {
 .form .col-1 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: 1fr;
 }
 
 .form .col-2 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .form .col-3 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .form .col-4 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .form .col-5 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .form .col-6 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(6, 1fr);
 }
 
 .form .col-7 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(7, 1fr);
 }
 
 .form .col-8 {
   display: grid;
   gap: 20px;
+  align-items: flex-end;
   grid-template-columns: repeat(8, 1fr);
 }
 
@@ -6040,7 +6280,7 @@ a:active {
 }
 
 .status--pending {
-  background: gray;
+  background: #c4c4c4;
 }
 
 .status--archived {

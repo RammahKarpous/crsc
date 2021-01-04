@@ -7,12 +7,12 @@
 <div class="wrapper">
     <div class="page-title-with-buttons">
         <h1>Family {{ $group->family_name }}</h1>
-
         <div>
-            <a href="{{ route('family-group.index') }}" class="button button--secondary mr-5">Back</a>
             <a href="{{ route('family-group.edit', $group->slug) }}" class="button button--primary">Update group info</a>
         </div>
     </div>
+
+    <a href="{{ route('family-group.index') }}" class="button button--secondary mr-5">Back</a>
     
     @auth
         @if (Auth::user()->member_type_id == 3)
@@ -27,43 +27,63 @@
             
             <div class="table">
                 <div class="{{ $rows }}">
-                    <h4>First name</h4>
+                    <h4>Name</h4>
                     <h4>Gender</h4>
                     <h4>Date of birth</h4>
                 </div>
             </div>
 
-            @foreach ($group->users as $user)
-                <div class="table">
+            <div class="table">
+                @foreach ($group->users as $user)
                     @if (($user->status->status === 'pending' || $user->status->status === 'active' ) && $user->member_type_id === 1)
                         <div class="row {{ $rows }}">
                             <p>{{ $user->name }}</p>
                             <p>{{ $user->gender }}</p>
                             <p>{{ date('d/m/Y', strtotime($user->dob)) }}</p>
                             <p class="status--{{ $user->status->status }}">{{ $user->status->status }}</p>
+                            <a href="{{ route('members.edit', $user->slug) }}" class="button button--primary">Update member details</a>
                         </div>
                         
                     @endif
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
 
         <div>
             <h2>Swimmers</h2>
 
-            @foreach ($group->users as $user)
-                <div class="table">
+            <div class="table">
+                @foreach ($group->users as $user)
                     @if (($user->status->status === 'pending' || $user->status->status === 'active' ) && $user->member_type_id === 2)
                         <div class="row {{ $rows }}">
                             <p>{{ $user->name }}</p>
                             <p>{{ $user->gender }}</p>
                             <p>{{ date('d/m/Y', strtotime($user->dob)) }}</p>
                             <p class="status--{{ $user->status->status }}">{{ $user->status->status }}</p>
+                            <a href="{{ route('members.edit', $user->slug) }}" class="button button--primary">Update member details</a>
                         </div>
                         
                     @endif
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+        </div>
+
+        <div>
+            <h2>Archived</h2>
+
+            <div class="table">
+                @foreach ($group->users as $user)
+                    @if (($user->status->status === 'archived' ))
+                        <div class="row {{ $rows }}">
+                            <p>{{ $user->name }}</p>
+                            <p>{{ $user->gender }}</p>
+                            <p>{{ date('d/m/Y', strtotime($user->dob)) }}</p>
+                            <p class="status--{{ $user->status->status }}">{{ $user->status->status }}</p>
+                            <a href="{{ route('members.edit', $user->slug) }}" class="button button--primary">Update member details</a>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
         </div>
     @endif
 </div>

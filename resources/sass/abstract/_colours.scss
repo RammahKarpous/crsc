@@ -14,3 +14,7 @@ $light-gray: #fcfcfc;
 .bg-light-gray {
     background: $light-gray;
 }
+
+.bg-darker-gray {
+    background: darken($light-gray, 5%);
+}

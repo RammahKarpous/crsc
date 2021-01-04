@@ -23,8 +23,11 @@ class UsersTableSeeder extends Seeder
             'dob' => '1994-09-28',
             'status_id' => 2,
             'name' => 'Rammah',
-            'email' => 'rammahkarpous@outlook.com',
+            'slug' => 'rammah',
+            'email' => 'admin@crsc.com',
             'password' => Hash::make('password'),
+            'lane' => null,
+            'result' => null,
             'created_at' => now(),
             'updated_at' => now()
         ]);

@@ -22,3 +22,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.flex {
+    display: flex;
+    gap: 20px;
+
+    &--row {
+        flex-flow: row wrap;
+    }
+
+    &--center {
+        align-items: center !important;
+    }
+}

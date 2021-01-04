@@ -21,8 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->timestamp('dob');
             $table->foreignId('status_id');
+            $table->string('slug');
             $table->string('name');
             $table->string('email');
+            $table->integer('lane')->nullable();
+            $table->string('result')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

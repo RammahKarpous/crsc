@@ -50,8 +50,8 @@
 
     <div class="col-3 my-10 mb-20">
         <div class="form__group">
-            <label class="form__label" for="distance">Distance</label>
-            <input class="form__input form__input--number" type="number" name="distance" id="distance" value="{{ $method === 'put' ? $model->distance : '' }}" min="0" max="{{ $model->pool_length }}"> <small>(max: {{ $model->pool_length }})</small>
+            <label class="form__label" for="distance">Distance (max: {{ $model->pool_length }})</label>
+            <input class="form__input form__input--number" type="number" name="distance" id="distance" value="{{ $method === 'put' ? $model->distance : '' }}" min="0" max="{{ $model->pool_length }}">
             @error('distance') {{ $message }} @enderror
         </div>
         
@@ -82,5 +82,5 @@
     @endif
 
     @csrf
-    <input type="submit" class="button button--primary" value="{{ $method === 'put' ? 'update' : 'add' }} Member">
+    <input type="submit" class="button button--primary" value="{{ $method === 'put' ? 'update' : 'add' }} Event">
 </form>

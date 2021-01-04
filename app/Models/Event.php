@@ -13,7 +13,7 @@ class Event extends Model
 
     public function users()
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(User::class);
     }
 
     public function meet()
