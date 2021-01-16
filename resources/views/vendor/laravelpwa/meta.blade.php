@@ -37,6 +37,7 @@
             scope: '.'
         }).then(function (registration) {
             // Registration was successful
+            registration.update();
             console.log('Laravel PWA: ServiceWorker registration successful with scope: ', registration.scope);
         }, function (err) {
             // registration failed :(

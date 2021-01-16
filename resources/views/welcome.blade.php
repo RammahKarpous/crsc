@@ -16,9 +16,6 @@
                 <p>{{ $event->start_time }}</p>
                 <p>{{ $event->end_time }}</p>
             </div>
-
-        @else
-            <p>There are no events at the moment.</p>
         @endif
     @endforeach
 
