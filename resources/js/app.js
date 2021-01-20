@@ -9,8 +9,9 @@ const animationEnter = (container) => {
 
 const animationLeave = (container) => {
     const tl = new TimelineMax();
+    const heading = container.querySelector('h1');
 
-    tl.to(container, {opacity: 0, duration: 2})
+    tl.to(heading, {x: 200, duration: 7})
 }
 
 barba.init({
@@ -23,7 +24,6 @@ barba.init({
             leave: ({current}) => animationLeave(current.container),
 
             enter({next}) {
-                console.log('Entering');
                 animationEnter(next.container)
             }
         }

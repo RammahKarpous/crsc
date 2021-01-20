@@ -23,7 +23,7 @@
         <x-navigation />
 
         <main class="py-4" data-barba="container" data-barba-namespace="{{ Request::is('/') ? 'home' : Request::segment(1) }}">
-            {{-- <x-messages :status="Session::get('success')"> --}}
+            <x-messages :status="Session::get('success')" />
             @yield('content')
         </main>
 

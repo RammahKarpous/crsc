@@ -5511,9 +5511,10 @@ var animationEnter = function animationEnter(container) {
 
 var animationLeave = function animationLeave(container) {
   var tl = new gsap__WEBPACK_IMPORTED_MODULE_1__["TimelineMax"]();
-  tl.to(container, {
-    opacity: 0,
-    duration: 2
+  var heading = container.querySelector('h1');
+  tl.to(heading, {
+    x: 200,
+    duration: 7
   });
 };
 
@@ -5529,7 +5530,6 @@ _barba_core__WEBPACK_IMPORTED_MODULE_0___default.a.init({
     },
     enter: function enter(_ref3) {
       var next = _ref3.next;
-      console.log('Entering');
       animationEnter(next.container);
     }
   }]
