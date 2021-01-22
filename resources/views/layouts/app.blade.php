@@ -16,14 +16,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    @laravelPWA
+    {{-- @laravelPWA --}}
 </head>
 <body>
     <div id="app">
         <x-navigation />
 
         <main class="py-4">
-            {{-- <x-messages :status="Session::get('success')"> --}}
+            <x-messages :status="Session::get('success')" />
             @yield('content')
         </main>
 
