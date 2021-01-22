@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FamilyGroupController;
 use App\Http\Controllers\MeetController;
@@ -51,4 +52,6 @@ Route::get('events/attach-swimmers', [EventsController::class, 'attachSwimmers']
 
 // Auth
 Auth::routes();
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('auth.register')->middleware('auth');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
