@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Rammah',
             'slug' => 'rammah',
             'email' => 'admin@crsc.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('admin'),
             'lane' => null,
             'result' => null,
             'created_at' => now(),
