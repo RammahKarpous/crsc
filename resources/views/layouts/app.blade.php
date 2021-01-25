@@ -16,7 +16,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    @laravelPWA
+    {{-- @laravelPWA --}}
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -33,5 +34,6 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    @livewireScripts
 </body>
 </html>
