@@ -13,10 +13,10 @@
                     
                     <div class="col-6">
                         <div class="form__group gcol-1-4">
-                            <label for="venue" class="form__label">Venue</label>
                             <select type="text" name="venue" class="form__input form__input--text">
+                                <option value="venue" selected disabled>Venue name</option>
                                 @foreach ($venues as $meet)
-                                    <option value="{{ $meet->venue }}">{{ $meet->venue }}</option>
+                                    <option value="{{ $meet->venue }}">{{ ucfirst($meet->venue) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -44,8 +44,8 @@
 
             @foreach ($meets as $meet)
                 <div class="meets--meet-info row @auth @if(Auth::user()->member_type_id == 3) row-6 @else row-5 @endif @else row-5 @endauth">
-                    <p>{{ $meet->name }}</p>
-                    <p>{{ $meet->venue }}</p>
+                    <p>{{ ucfirst($meet->name) }}</p>
+                    <p>{{ ucfirst($meet->venue) }}</p>
                     <p>{{ date('d/m/Y', strtotime($meet->date)) }}</p>
                     <p>{{ $meet->pool_length }}</p>
                     
