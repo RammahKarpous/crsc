@@ -3,9 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\FamilyGroup;
-use App\Models\Swimmer;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
@@ -17,13 +16,12 @@ class SwimmerManagementTest extends TestCase
 
     /** @test */
     public function a_club_official_can_add_a_swimmer() {
-
         
         $famGroup = FamilyGroup::first();
 
-        $swimmer = $this->post('/swimmers', $this->data());
+        $swimmer = $this->post('/family-group/'. $famGroup->id .'/create-member', $this->data());
         
-        $this->assertCount(1, Swimmer::all());
+        $this->assertCount(1, User::all());
     }
 
     // /** @test */
@@ -33,10 +31,10 @@ class SwimmerManagementTest extends TestCase
 
         $this->post('/swimmers', $this->data());
 
-        $swimmer = Swimmer::first();
+        $swimmer = User::first();
         $response = $this->patch('/swimmers/' . $swimmer->id, array_merge($this->data(), ['name' => 'Jacky']));
         
-        $this->assertEquals('Jacky', Swimmer::first()->name);
+        $this->assertEquals('Jacky', User::first()->name);
     }
 
     public function data()

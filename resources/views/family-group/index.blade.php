@@ -18,7 +18,6 @@
 
         <div class="table">
             @foreach ($groups as $group)
-                
                 <div class="row row-6">
                     <p>{{ $group->family_name }}</p>
                     <p>{{ $group->address_line }}</p>

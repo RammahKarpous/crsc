@@ -22,8 +22,8 @@ class MeetManagementTest extends TestCase
             'name' => 'Rammah new meet',
             'slug' => 'rammah-new-meet',
             'venue' => 'My venue',
-            'date' => '11/24/2020',
-            'pool_length' => 6
+            'date' => '11/02/2021',
+            'pool_length' => 10
         ]);
 
         $event->assertOk();

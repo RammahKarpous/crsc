@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AgeRangesTableSeeder::class,
-            FamilyGroupTableSeeder::class,
+            // FamilyGroupTableSeeder::class,
             StatusesTableSeeder::class,
             MemberTypesTableSeeder::class,
             UsersTableSeeder::class

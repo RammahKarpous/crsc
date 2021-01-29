@@ -24,8 +24,8 @@
             <div class="row-8">
                 <p>{{ $event->meet->name }}</p>
                 <p>{{ $event->slug }}</p>
-                <p>{{ $event->start_time }}</p>
-                <p>{{ $event->end_time }}</p>
+                <p>{{ \Carbon\Carbon::createFromFormat('H:i:s', $event->start_time)->format('H:i') }}</p>
+                <p>{{ \Carbon\Carbon::createFromFormat('H:i:s', $event->end_time)->format('H:i') }}</p>
                 <p>{{ $event->gender }}</p>
                 <p>{{ $event->distance }}</p>
                 <p>{{ $event->stroke }}</p>

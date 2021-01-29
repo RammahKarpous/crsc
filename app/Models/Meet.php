@@ -30,8 +30,8 @@ class Meet extends Model
         return $query->where('venue', request('venue'));
     }
 
-    public function scopeDateRange($query)
-    {
-        return $query->where('venue', request('venue'));
+    public function scopeDateRange($query, $from_date, $to_date)
+    {        
+        return $query->whereBetween('date', [$from_date, $to_date]);
     }
 }

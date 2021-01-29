@@ -11,7 +11,7 @@ class FamilyGroupController extends Controller
 
     public function __constructor()
     {
-        $this->middleware('auth');
+        return $this->middleware('auth');
     }
 
     public function index()

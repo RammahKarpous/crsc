@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\FamilyGroup;
 use App\Models\Parents;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -21,9 +22,9 @@ class ParentManagementTest extends TestCase
         // $this->withoutExceptionHandling();
 
         $this->post('/parents/store', $this->data());
-        $this->assertCount(1, Parents::all());
+        $this->assertCount(1, User::all());
 
-        $this->assertInstanceOf(Carbon::class, Parents::first()->dob);
+        $this->assertInstanceOf(Carbon::class, User::first()->dob);
     }
 
     // /** @test */
@@ -39,15 +40,15 @@ class ParentManagementTest extends TestCase
         // $this->withoutExceptionHandling();
    
         $this->post('/parents', $this->data());
-        $this->assertCount(1, Parents::all());
+        $this->assertCount(1, User::all());
 
-        $parent = Parents::first();
+        $parent = User::first();
         $response = $this->patch('/parents/' . $parent->id, array_merge($this->data(), ['name' => 'Jessica']));
 
         $response->assertOK();
 
         $this->assertInstanceOf(Carbon::class, $parent->first()->dob);
-        $this->assertEquals('Jessica', Parents::first()->name);
+        $this->assertEquals('Jessica', User::first()->name);
     }
 
     // /** @test */
@@ -57,11 +58,11 @@ class ParentManagementTest extends TestCase
 
         $this->post('/parents', $this->data());
 
-        $parent = Parents::first();
+        $parent = User::first();
 
         $response = $this->patch('/parent/' . $parent->id, array_merge($this->data(), ['status_id' => 3]));
 
-        $this->assertEquals('archived', Parents::first()->status);
+        $this->assertEquals('archived', User::first()->status);
     }
 
     public function data()

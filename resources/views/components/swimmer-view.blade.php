@@ -4,7 +4,6 @@
     <h2>Events</h2>
     <div class="table">
         <div class="row">
-            <p>{{ Auth::user() }}</p>
         </div>
     </div>
 </div>

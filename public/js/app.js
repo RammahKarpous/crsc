@@ -93,7 +93,39 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var isParticipating = document.querySelectorAll('.is-participating');
+var laneNumbers = document.querySelectorAll('.lane-number');
+var selectedLane = document.querySelectorAll('.selected-lane');
 
+var _loop = function _loop(i) {
+  if (isParticipating[i].checked == true) {
+    selectedLane[i].checked = true;
+  }
+
+  isParticipating[i].addEventListener('change', function () {
+    if (isParticipating[i].checked == true) {
+      selectedLane[i].checked = true;
+    } else {
+      selectedLane[i].checked = false;
+    }
+  });
+};
+
+for (var i = 0; i < isParticipating.length; i++) {
+  _loop(i);
+}
+
+var _loop2 = function _loop2(_i) {
+  selectedLane[_i].value = laneNumbers[_i].value;
+
+  laneNumbers[_i].addEventListener('change', function () {
+    selectedLane[_i].value = laneNumbers[_i].value;
+  });
+};
+
+for (var _i = 0; _i < laneNumbers.length; _i++) {
+  _loop2(_i);
+}
 
 /***/ }),
 

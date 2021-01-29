@@ -3,7 +3,7 @@
 @section('title', 'Meet: ' . $meet->name)
 
 @section('content')
-    <div class="wrapper">
+    <div class="wrapper py-20">
         @auth
             @if(Auth::user()->member_type_id == 3)
                 <div class="page-title-with-buttons">
@@ -22,7 +22,50 @@
             <h1>{{ $meet->name }}</h1>
             <a href="{{ route('meets.index') }}" class="button button--secondary">Back</a>
         @endauth
-        
+
+        <h2 class="mb-0">Filter meet</h2>
+        <div class="buttons--wrapper buttons--wrapper-horizontal">
+            <form class="form" action="{{ route('meets.filter') }}" method="post">
+                <div class="col-8">
+                    <div class="form__group">
+                        <label for="venue">Age range</label>
+                        <select type="text" name="venue" class="form__input form__input--select" id="venue">
+                            <option value="venue" selected disabled>Age range</option>
+                            @foreach ($age_ranges as $range)
+                                <option {{ $range === $meet->venue ? 'selected' : '' }} value="{{ $range->id }}">{{ ucfirst($range->age_range) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- <div class="form__group">
+                        <label for="venue">Gender</label>
+                        <select type="text" name="venue" class="form__input form__input--select" id="venue">
+                            <option value="venue" selected disabled>Gender</option>
+                            @foreach ($venues as $meet)
+                                <option {{ $venue === $meet->venue ? 'selected' : '' }} value="{{ $meet->venue }}">{{ ucfirst($meet->venue) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="venue">Distance</label>
+                        <select type="text" name="venue" class="form__input form__input--select" id="venue">
+                            <option value="venue" selected disabled>Distance</option>
+                            @foreach ($venues as $meet)
+                                <option {{ $venue === $meet->venue ? 'selected' : '' }} value="{{ $meet->venue }}">{{ ucfirst($meet->venue) }}</option>
+                            @endforeach
+                        </select>
+                    </div> --}}
+
+                    <input type="submit" value="filter" class="button button--primary">
+                </div>
+                
+                <a href="{{ route('meets.index') }}" class="button button__link py-14 ml-5">Clear</a>
+                @csrf
+            </form>
+
+        </div>
+
         <div class="events">
             <h2>Events</h2>
 
@@ -41,7 +84,7 @@
                     @foreach ($meet->events as $event)
                         <div class="row @auth row-8 @else row-7 @endauth">
                             <p>{{ $event->age_range->age_range }}</p>
-                            <p>{{ \Carbon\Carbon::createFromFormat('H:i:s', $event->start_time)->format('h:i') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $event->end_time)->format('h:i') }}</p>
+                            <p>{{ \Carbon\Carbon::createFromFormat('H:i:s', $event->start_time)->format('H:i') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $event->end_time)->format('H:i') }}</p>
                             <p>{{ $event->gender }}</p>
                             <p>{{ $event->distance }}</p>
                             <p>{{ $event->stroke }}</p>

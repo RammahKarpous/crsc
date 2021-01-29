@@ -18,8 +18,13 @@ class EventsController extends Controller
 
     public function store()
     {        
-        $this->validateData();
-        Event::create($this->data());
+        $digits = 5;
+        
+        Event::create(array_merge($this->validateData(), [
+            'meet_id' => request('meet_id'), 
+            'slug' => 'event-' . rand(pow(10, $digits-1), pow(10, $digits)-1)
+        ]));
+
         return redirect()->back()->with('success', 'An event has been added.');
     }
 
@@ -30,13 +35,19 @@ class EventsController extends Controller
 
     public function update(Event $event)
     {
-        $this->validateData();
-        $event->update($this->data());
+        $digits = 5;
+        
+        $event->update(array_merge($this->validateData(), [
+            'meet_id' => request('meet_id'), 'slug' => 
+            'event-' . rand(pow(10, $digits-1), pow(10, $digits)-1)
+        ]));
+
         return redirect()->back()->with('success', 'An event has been updated.');
     }
 
     public function addSwimmers(Event $event)
     {
+
         if ($event->age_range_id == 1) {
         
             $minAge = 15;
@@ -67,31 +78,21 @@ class EventsController extends Controller
     }
 
     public function attachSwimmers()
-    {
-        User::where('id', request('is-participating'))
-            ->update([
-                'event_id' => request('event_id'),
-                'lane' => request('lane-number')
-            ]);
+    {        
 
-        return redirect()->back()->with('success', 'The swimmer(s) has/have been added to the event.');
-    }
+        $participants = request('is-participating');
+        $selectedLanes = request('selected-lane');
 
-    public function data()
-    {
-        $digits = 5;
+        for ($i=0; $i < count($participants); $i++) { 
 
-        return [
-            'meet_id' => request('meet_id'),
-            'age_range_id' => request('age_range_id'),
-            'start_time' => request('start_time'),
-            'end_time' => request('end_time'),
-            'slug' => 'event-' . rand(pow(10, $digits-1), pow(10, $digits)-1),
-            'gender' => request('gender'),
-            'distance' => request('distance'),
-            'stroke' => request('stroke'),
-            'round' => request('round')
-        ]; 
+            User::where('id', request('is-participating')[$i])
+                ->update([
+                    'event_id' => request('event_id'),
+                    'lane' => $selectedLanes[$i]
+                ]);
+        }
+ 
+        return redirect()->route('events.show', request('slug'))->with('success', 'The swimmer(s) has/have been added to the event.');
     }
 
     protected function validateData()

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AgeRange;
 use App\Models\Meet;
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MeetController extends Controller
 {
     public function index()
     {
-        return view('meets.index', [
-            'meets' => Meet::all(),
-            'venues' => Meet::all()->unique()->where('venue', request('venue'))
-        ]);
+        return view('meets.index', $this->getQuery());
     }
 
     public function create()
@@ -24,7 +23,8 @@ class MeetController extends Controller
     public function show(Meet $meet)
     {
         return view('meets.show', [
-            'meet' => $meet
+            'meet' => $meet,
+            'age_ranges' => AgeRange::all(),
         ]);
     }
 
@@ -35,56 +35,69 @@ class MeetController extends Controller
 
     public function store()
     {
-        $this->validateData();
-        Meet::create($this->data());
-
-        return view('meets.index', ['meets' => Meet::all()]);
+        Meet::create(array_merge($this->validateData(), ['slug' => Str::slug(request('name'))]));
+        return redirect()->route('meets.index', $this->getQuery());
     }
-
+    
     public function update(Meet $meet)
-    {        
-        $this->validateData();
-        $meet->update($this->data());
-
+    {
+        $meet->update(array_merge($this->validateData(), ['slug' => Str::slug(request('name'))]));
         return redirect()->route('meets.index', ['meets' => Meet::all()]);
     }
 
-    public function filter()
+    public function filterMeet()
     {
 
+        $from_date = Carbon::parse(request('from_date'));
+        $to_date = Carbon::parse(request('to_date'));
 
-        if (request('venue')) 
-        {
+        if (request('venue')) {
             return view('meets.index', [
-                'meets' => Meet::all()->where('venue', request('venue')), 
-                'venues' => Meet::all()->unique()->where('venue', request('venue'))
+                'meets' => Meet::venue()->dateRange($from_date, $to_date)->get(),
+                'venues' => Meet::all()->unique('venue'),
+                'venue' => request('venue'),
+                'from_date' => $from_date,
+                'to_date' => $to_date,
             ]);
-        } 
-        
-        else if (request('venue') && request('start_date') && request('end_date')) 
-        {
-            return view('meets.index', ['meets' => Meet::where('venue', request('venue'))]);
+        } else {
+            return view('meets.index', [
+                'meets' => Meet::dateRange($from_date, $to_date)->get(),
+                'venues' => Meet::all()->unique('venue'),
+                'venue' => request('venue'),
+                'from_date' => $from_date,
+                'to_date' => $to_date,
+            ]);
         }
+
     }
 
-    public function data()
+    private function getQuery()
     {
         return [
-            'name' => request('name'),
-            'slug' => Str::slug(request('name')),
-            'venue' => request('venue'),
-            'date' => request('date'),
-            'pool_length' => request('pool_length')
+            'meets' => Meet::orderBy('date', 'asc')->get(),
+            'venues' => Meet::all()->unique('venue'),
+            'venue' => '',
+            'from_date' => now(),
+            'to_date' => $this->getDate(),
         ];
     }
 
-    public function validateData()
+    public function getDate()
+    {
+        if (count(Meet::all()) > 0) {
+            return Meet::orderBy('date', 'desc')->first()->date;
+        } else {
+            return now();
+        }
+    }
+
+    private function validateData()
     {
         return request()->validate([
             'name' => 'required',
             'venue' => 'required',
             'date' => 'required|date',
-            'pool_length' => 'required'
+            'pool_length' => 'required',
         ]);
     }
 }

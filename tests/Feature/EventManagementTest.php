@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Models\AgeRange;
 use App\Models\Event;
 use App\Models\EventInfo;
 use App\Models\Meet;
 use App\Models\Swimmer;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -20,14 +23,21 @@ class EventManagementTest extends TestCase
     /** @test */
     public function a_club_official_can_create_an_event()
     {        
+        $this->withoutExceptionHandling();
+        
         $meet = Meet::factory()->create();
+        $ageRange = AgeRange::factory()->create();
+
+        $this->assertCount(1, AgeRange::all());
+        // dd($ageRange);
 
         $response = $this->post('/events/store', $this->data());
 
         $response->assertOk();
 
-        $this->assertCount(1, Event::all());
-        $this->assertEquals($meet->id, Event::first()->id);
+        // $this->assertCount(1, Event::all());
+        // $this->assertEquals($ageRange->id, Event::first()->age_range_id);
+        $this->assertEquals($meet->id, Event::first()->meet_id);
     }
 
     // /** @test */
@@ -36,7 +46,7 @@ class EventManagementTest extends TestCase
         // $this->withoutExceptionHandling();
         
         $event = Event::factory()->create();
-        $swimmer = Swimmer::factory()->create();
+        $swimmer = User::factory()->create();
 
         $response = $this->post('/events/' . $event->id, [
             'swimmer_id' => $swimmer->id,
@@ -81,7 +91,11 @@ class EventManagementTest extends TestCase
     public function data()
     {
         return [
-            'age_range' => 'Seniors',
+            'meet_id' => 1,
+            'age_range_id' => 2,
+            'start_time' => '13:00:00',
+            'end_time' => '14:00:00',
+            'slug' => 'event-34534',
             'gender' => 'Female',
             'distance' => 3,
             'stroke' => 'Breaststroke',

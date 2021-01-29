@@ -4,30 +4,30 @@
 
 @for $i from 0 to 101 {
     .m-#{$i} {
-        margin: #{$i}px;
+        margin: #{$i}px !important;
     }
 
     .mt-#{$i} {
-        margin-top: #{$i}px;
+        margin-top: #{$i}px !important;
     }
 
     .mr-#{$i} {
-        margin-right: #{$i}px;
+        margin-right: #{$i}px !important;
     }
 
     .mb-#{$i} {
-        margin-bottom: #{$i}px;
+        margin-bottom: #{$i}px !important;
     }
 
     .ml-#{$i} {
-        margin-left: #{$i}px;
+        margin-left: #{$i}px !important;
     }
 
     .my-#{$i} {
-        margin: #{$i}px 0;
+        margin: #{$i}px 0 !important;
     }
 
     .mx-#{$i} {
-        margin: 0 #{$i}px;
+        margin: 0 #{$i}px !important;
     }
 }

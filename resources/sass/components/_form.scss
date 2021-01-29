@@ -26,5 +26,9 @@
         &--date {
             @include calc-width(100%, $input-padding);
         }
+
+        &--select {
+            width: 100%;
+        }
     }
 }
